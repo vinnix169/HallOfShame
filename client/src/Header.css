@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&family=Rubik+Doodle+Shadow&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Raleway", sans-serif;
+}
+
+input[type="search"] {
+  padding: 5px;
+  font-size: medium;
+  border: black 1px solid;
+  border-radius: 6px;
+  background-color: #1f2224;
+  box-shadow: inset 0 0 1px 2px rgb(0, 0, 0, 0.2);
+}
+
+input[type="button"] {
+  background-color: #202325;
+  border: black 1px solid;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 1px 2px rgb(0, 0, 0, 0.2);
+}
+
+input[type="button"]:hover {
+  background-color: #353a3d;
+  border: black 1px solid;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 1px 2px rgb(0, 0, 0, 0.2);
+}
+
+input[type="button"]:active {
+  background-color: #151718;
+}
+
+.search-btn {
+  margin-left: 10px;
+}
+
+header {
+  background-color: #222529;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-upper-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-account {
+  width: 35px;
+  height: 35px;
+  border: rgb(219, 219, 219) 2px solid;
+  border-radius: 66px;
+  background-image: url("./logo.svg");
+  background-position: center;
+  background-size: cover;
+}
+.hos-logo {
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-size: 30px;
+}
+
+.header-container ul {
+  list-style: none;
+}
+
+.header-upper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.header-upper-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-lower {
+  width: 100%;
+  border-bottom: solid black 1px;
+  box-shadow: 0 1px 1px 1px rgb(0, 0, 0, 0.2);
+}
+
+.header-lower-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: white;
+  background-color: black;
+}
+
+.nav-link {
+  width: 100%;
+  text-align: center;
+  padding: 10px 10px;
+}
