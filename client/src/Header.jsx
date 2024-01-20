@@ -1,48 +1,36 @@
-import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-
-  const [accountSelected, setAccountSelected] = useState(false)
+const Header = (onSearch) => {
+  const [accountSelected, setAccountSelected] = useState(false);
+  const [searchInput, setSearchInput] = useState(null);
 
   const selectAccount = () => {
     if (accountSelected) {
-      setAccountSelected(false)
+      setAccountSelected(false);
+    } else if (!accountSelected) {
+      setAccountSelected(true);
     }
-    else if (!accountSelected) {
-      setAccountSelected(true)
-    }
-  }
+  };
+
+  const handleSearch = () => {
+    onSearch(searchInput);
+  };
 
   return (
     <>
       <header>
         <div className="header-container">
           <div className="header-upper">
-            <div className="header-upper-container">
-              <div className="header-upper-item">
-                <div className="hos-logo">Wall of Shame</div>
-              </div>
-              <div className="header-upper-item">
-                <input
-                  type="search"
-                  name="search"
-                  id="search"
-                  placeholder="Search..."
-                />
-                <input className="search-btn" type="button" value="S" />
-              </div>
-              <div className="header-upper-item">
-                <a className="header-account" onClick={selectAccount}></a>
-              </div>
-              <div className={`selected-acc-${accountSelected}`}>
-                <ul>
-                  <li>asd</li>
-                  <li>asd</li>
-                  <li>asd</li>
-                  <li>asd</li>
-                </ul>
-              </div>
+            <div className="hos-logo">Wall of Shame</div>
+            <div className="header-upper-space"></div>
+            <a className="header-account" onClick={selectAccount}></a>
+
+            <div className={`selected-acc-${accountSelected}`}>
+              <ul>
+                <li>Log in</li>
+                <li>Register</li>
+              </ul>
             </div>
           </div>
           <div className="header-lower">

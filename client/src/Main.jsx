@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 
-
 import "./Main.css";
 import useFetch from "./useFetch";
 import PostList from "./PostList";
 
-
 const Main = () => {
   //init variables
-  const { data, pending, error } = useFetch("http://localhost:8000/items")
-
-
-
+  const { data, pending, error } = useFetch("http://localhost:8000/items");
 
   return (
     <main>
@@ -19,7 +14,6 @@ const Main = () => {
       {error && <div className="error">{error}</div>}
       <div className="main-container">
         <div className="result-container">
-          
           {data && <PostList data={data} />}
         </div>
       </div>
