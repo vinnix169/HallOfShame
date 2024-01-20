@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Upload from "./Upload";
 import Categories from "./Catgories";
 import Login from "./Login";
+import PostDetail from "./PostDetail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/upload" element={<Upload/>}/>
           <Route path="/categories" element={<Categories/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/post/:id" element={<PostDetail/>}/>
         </Routes>
         
       </div>

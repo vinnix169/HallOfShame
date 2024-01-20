@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import {Link} from 'react-router-dom'
 
 const Header = () => {
+
+  const [accountSelected, setAccountSelected] = useState(false)
+
+  const selectAccount = () => {
+    if (accountSelected) {
+      setAccountSelected(false)
+    }
+    else if (!accountSelected) {
+      setAccountSelected(true)
+    }
+  }
+
   return (
     <>
       <header>
@@ -20,13 +33,21 @@ const Header = () => {
                 <input className="search-btn" type="button" value="S" />
               </div>
               <div className="header-upper-item">
-                <div className="header-account"></div>
+                <a className="header-account" onClick={selectAccount}></a>
+              </div>
+              <div className={`selected-acc-${accountSelected}`}>
+                <ul>
+                  <li>asd</li>
+                  <li>asd</li>
+                  <li>asd</li>
+                  <li>asd</li>
+                </ul>
               </div>
             </div>
           </div>
           <div className="header-lower">
             <div className="header-lower-container">
-              <Link class="nav-link" to="/home">
+              <Link class="nav-link" to="/">
                 Home
               </Link>
               <Link class="nav-link" to="/categories">

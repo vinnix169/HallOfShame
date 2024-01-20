@@ -5,8 +5,20 @@
 
 main {
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+}
+
+.sort-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sort-pagination {
+  display: flex;
 }
 
 .result-container {
@@ -16,7 +28,6 @@ main {
   align-items: center;
   flex-direction: column;
 }
-
 .result-pagination {
   display: flex;
   width: 100%;
@@ -69,4 +80,10 @@ main {
   font-size: 10px;
   align-items: end;
   justify-content: space-between;
+}
+
+
+.loading {
+  position: absolute;
+  padding: 20px;
 }

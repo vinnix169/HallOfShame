@@ -25,12 +25,14 @@ select, select option {
   border: black 1px solid;
 }
 
+
 input[type="button"] {
   background-color: #202325;
   border: black 0px solid;
   border-radius: 6px;
   box-shadow: 0 0 3px 1px rgb(0, 0, 0, 0.6);
 }
+
 
 input[type="button"]:hover {
   background-color: #353a3d;
@@ -77,6 +79,31 @@ header {
   background-position: center;
   background-size: cover;
 }
+
+.selected-acc-false {
+  display: none;
+}
+
+.selected-acc-true {
+  position: absolute;
+  top: 80px;
+  right: 10vw;
+  width: 150px;
+  height: 200px;
+  background-color: #151718;
+  border-radius: 10px;
+}
+
+.selected-acc-true li {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.selected-acc-true li:hover {
+background-color: #353a3d;
+}
+
+
 .hos-logo {
   font-family: "Rubik Doodle Shadow", system-ui;
   font-size: 30px;
@@ -123,3 +150,4 @@ a:hover {
   text-align: center;
   padding: 10px 10px;
 }
+
