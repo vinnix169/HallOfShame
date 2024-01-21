@@ -1,61 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&family=Rubik+Doodle+Shadow&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  color: white;
-  font-family: "Raleway", sans-serif;
-}
 
-body {
-  background-color: #1c1f22;
-}
-
-input[type="search"] {
-  padding: 5px;
-  font-size: medium;
-  border: rgb(255, 255, 255) 1px solid;
-  border-radius: 6px;
-  background-color: #1f2224;
-}
-
-select,
-select option {
-  padding: 10px;
-  background-color: #222529;
-  border: black 1px solid;
-}
-
-input[type="button"] {
-  background-color: #202325;
-  border: rgb(255, 255, 255) 1px solid;
-  border-radius: 6px;
-}
-
-input[type="button"]:hover {
-  background-color: #353a3d;
-}
-
-input[type="button"]:active {
-  background-color: #151718;
-}
-
-.search-btn {
-  margin-left: 10px;
-  width: 30px;
-  height: 30px;
-  background-image: url("./img/search.png");
-  background-position: center;
-  background-size: 20px;
-  background-repeat: no-repeat;
-}
-
-header {
-  background-color: #222529;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}
 
 .header-container {
   display: flex;
@@ -69,7 +12,7 @@ header {
   height: 35px;
   border: rgb(219, 219, 219) 2px solid;
   border-radius: 66px;
-  background-image: url("./logo.svg");
+  background-image: url("./img/DefaulUsr.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -110,38 +53,22 @@ header {
   list-style: none;
 }
 
-.header-upper {
+.header-upper-container {
   display: flex;
   justify-content: space-around;
   width: 100%;
   padding: 20px 0;
 }
 
-.header-upper-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-lower {
+.header-lower-container {
   width: 100%;
   box-shadow: 0 1px 1px 1px rgb(0, 0, 0, 0.2);
 }
 
-.header-lower-container {
+.header-lower-flex {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  color: white;
-  background-color: black;
 }
 
 .nav-link {

@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./Header.css";
-
+import "./default.css"
 import "./Pagination.css";
 import Header from "./Header";
 import Main from "./Main";

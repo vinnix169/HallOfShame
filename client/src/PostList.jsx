@@ -1,3 +1,5 @@
+
+
 import UseScroll from "./UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -5,12 +7,17 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 
 const PostList = (data) => {
-  const itemsPerPage = 16;
   const [currentPage, setCurrentPage] = useState(0);
-  const [sortedData, setSortedData] = useState([]);
+  const itemsPerPage = 16;
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  let tempSearch = "";
+
+  const [sortedData, setSortedData] = useState([]);
   const [userMessage, setUserMessage] = useState("");
+  const [userSearchInput, setUserSearchInput] = useState("");
+  const [showSearchRecommendation, setShowSearchRecommendation] = useState(false);
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
@@ -19,7 +26,6 @@ const PostList = (data) => {
 
   const sortItem = (e) => {
     let sort = e ? e.target.value : "Views";
-    console.log("Data after sorting");
     switch (sort) {
       case "Likes": {
         setUserMessage("The most liked posts:");
@@ -37,19 +43,31 @@ const PostList = (data) => {
     }
   };
 
+
   useEffect(() => {
     setSortedData((prev) => [...data.data]);
     sortItem();
   }, []);
 
-  console.log("data before return");
-  console.log(sortedData);
+
+
 
   return (
     <>
+      <div className="search-element">
+        <input
+          type="search"
+          placeholder="Search..."
+          onChange={(e) => setUserSearchInput(e.target.value)}
+        />
+        <input
+          className="search-btn"
+          type="button"
+        />
+      </div>
       <div className="result-pagination">
         <div className="sort-element">
-          <div>{userMessage}</div>
+          <h2>{userMessage}</h2>
           <div className="sort-pagination">
             <select
               defaultValue="Views"
@@ -85,6 +103,7 @@ const PostList = (data) => {
       </div>
       <div className="result-grid">
         {sortedData
+          .filter((item) => item.name.toLowerCase().includes(userSearchInput.toLowerCase()))
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
             <div key={index} className="result-grid-element">

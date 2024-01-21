@@ -6,7 +6,7 @@ import "./Detail.css"
 
 const PostDetail = () => {
     const { id } = useParams()
-    const { data, pending, error } = useFetch('http://localhost:8000/items/' + id)
+    const { data, pending, error } = useFetch('http://localhost:3001/getPosts/' + id)
     console.log(data)
     return (
         <main>

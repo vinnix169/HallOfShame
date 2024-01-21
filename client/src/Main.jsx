@@ -6,7 +6,7 @@ import PostList from "./PostList";
 
 const Main = () => {
   //init variables
-  const { data, pending, error } = useFetch("http://localhost:8000/items");
+  const { data, pending, error } = useFetch("http://localhost:3001/getPosts");
 
   return (
     <main>

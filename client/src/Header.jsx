@@ -21,7 +21,7 @@ const Header = (onSearch) => {
     <>
       <header>
         <div className="header-container">
-          <div className="header-upper">
+          <div className="header-upper-container">
             <div className="hos-logo">Wall of Shame</div>
             <div className="header-upper-space"></div>
             <a className="header-account" onClick={selectAccount}></a>
@@ -33,8 +33,8 @@ const Header = (onSearch) => {
               </ul>
             </div>
           </div>
-          <div className="header-lower">
-            <div className="header-lower-container">
+          <nav className="header-lower-container">
+            <div className="header-lower-flex">
               <Link class="nav-link" to="/">
                 Home
               </Link>
@@ -48,7 +48,7 @@ const Header = (onSearch) => {
                 Login
               </Link>
             </div>
-          </div>
+          </nav>
         </div>
       </header>
     </>
