@@ -106,7 +106,7 @@ const PostList = (data) => {
                   <div
                     className="result-img"
                     style={{
-                      backgroundImage: `url("http://localhost:8000/uploads/"${element.image})`,
+                      backgroundImage: `url("http://localhost:8000/uploads/${element.image}")`,
                     }}
                   ></div>
                   <div className="result-text">

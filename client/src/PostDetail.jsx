@@ -14,11 +14,12 @@ const PostDetail = () => {
           <div
             className="detail-image"
             style={{
-              backgroundImage: `url(${data.image})`,
+              backgroundImage: `url("http://localhost:8000/uploads/${data.image}")`,
             }}
           ></div>
           <div className="detail-desc">
             <div>Still image title: {data.title}</div>
+            <div>Description: {data.description}</div>
             <div className="detail-likes">
               <div>Views: {data.views}</div>
               <div>Upvotes: {data.likes}</div>
