@@ -7,9 +7,23 @@ const PostModel = require("./models/Post");
 app.use(cors());
 app.use(express.json());
 
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Specify the folder where uploaded files will be stored
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname); // Rename the file to avoid conflicts
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.use("/uploads", express.static("uploads"));
+
 mongoose
   .connect(
-    "mongodb+srv://remibende:Asdman169@hallofshamecluster.ryucxpo.mongodb.net/posts"
+    "mongodb+srv://remibende:Asdman169@hallofshamecluster.ryucxpo.mongodb.net/hallofshamedb"
   )
   .then(() => {
     console.log("MongoDB connected successfully");
@@ -18,9 +32,20 @@ mongoose
     console.error("MongoDB connection error:", err);
   });
 
-app.get("/posts/getPosts", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
-    const result = await PostModel.find({});
+    const result = await PostModel.find();
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    console.error("Error fetching posts:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/post/:id", async (req, res) => {
+  try {
+    const result = await PostModel.findById(req.params.id);
     console.log(result);
     res.json(result);
   } catch (err) {

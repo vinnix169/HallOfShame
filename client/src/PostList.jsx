@@ -2,7 +2,6 @@ import UseScroll from "./UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 
 const PostList = (data) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -47,6 +46,7 @@ const PostList = (data) => {
     sortItem();
   }, []);
 
+  console.log(data);
   return (
     <>
       <div className="search-element">
@@ -96,17 +96,17 @@ const PostList = (data) => {
       <div className="result-grid">
         {sortedData
           .filter((item) =>
-            item.name.toLowerCase().includes(userSearchInput.toLowerCase())
+            item.title.toLowerCase().includes(userSearchInput.toLowerCase())
           )
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
             <div key={index} className="result-grid-element">
-              <Link to={`/post/${element.id}`}>
+              <Link to={`/post/${element._id}`}>
                 <div className="result-element-container">
                   <div
                     className="result-img"
                     style={{
-                      backgroundImage: `url("${element.image}")`,
+                      backgroundImage: `url("http://localhost:8000/uploads/"${element.image})`,
                     }}
                   ></div>
                   <div className="result-text">

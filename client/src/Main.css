@@ -3,7 +3,6 @@
   list-style: none;
 }
 
-
 .search-btn {
   margin-left: 10px;
   width: 30px;
@@ -13,7 +12,6 @@
   background-size: 20px;
   background-repeat: no-repeat;
 }
-
 
 .search-element {
   display: flex;
@@ -75,6 +73,7 @@
   width: 100%;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .result-text {
@@ -91,7 +90,6 @@
   align-items: end;
   justify-content: space-between;
 }
-
 
 .loading {
   position: absolute;

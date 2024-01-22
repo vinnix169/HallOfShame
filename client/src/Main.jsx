@@ -6,9 +6,7 @@ import PostList from "./PostList";
 
 const Main = () => {
   //init variables
-  const { data, pending, error } = useFetch(
-    "http://127.0.0.1:8000/posts/getPosts"
-  );
+  const { data, pending, error } = useFetch("http://127.0.0.1:8000/");
 
   return (
     <main>
