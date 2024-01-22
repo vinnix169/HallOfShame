@@ -1,5 +1,3 @@
-
-
 import UseScroll from "./UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -17,7 +15,8 @@ const PostList = (data) => {
   const [sortedData, setSortedData] = useState([]);
   const [userMessage, setUserMessage] = useState("");
   const [userSearchInput, setUserSearchInput] = useState("");
-  const [showSearchRecommendation, setShowSearchRecommendation] = useState(false);
+  const [showSearchRecommendation, setShowSearchRecommendation] =
+    useState(false);
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
@@ -43,14 +42,10 @@ const PostList = (data) => {
     }
   };
 
-
   useEffect(() => {
     setSortedData((prev) => [...data.data]);
     sortItem();
   }, []);
-
-
-
 
   return (
     <>
@@ -60,10 +55,7 @@ const PostList = (data) => {
           placeholder="Search..."
           onChange={(e) => setUserSearchInput(e.target.value)}
         />
-        <input
-          className="search-btn"
-          type="button"
-        />
+        <input className="search-btn" type="button" />
       </div>
       <div className="result-pagination">
         <div className="sort-element">
@@ -103,7 +95,9 @@ const PostList = (data) => {
       </div>
       <div className="result-grid">
         {sortedData
-          .filter((item) => item.name.toLowerCase().includes(userSearchInput.toLowerCase()))
+          .filter((item) =>
+            item.name.toLowerCase().includes(userSearchInput.toLowerCase())
+          )
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
             <div key={index} className="result-grid-element">
@@ -112,11 +106,11 @@ const PostList = (data) => {
                   <div
                     className="result-img"
                     style={{
-                      backgroundImage: `url("${element.imagePath}")`,
+                      backgroundImage: `url("${element.image}")`,
                     }}
                   ></div>
                   <div className="result-text">
-                    <div className="result-title">{element.name}</div>
+                    <div className="result-title">{element.title}</div>
                     <h6>Views: {element.views}</h6>
                     <div className="result-analitics-container">
                       <div>Likes: {element.likes}</div>
