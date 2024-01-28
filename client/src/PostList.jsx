@@ -14,8 +14,6 @@ const PostList = (data) => {
   const [sortedData, setSortedData] = useState([]);
   const [userMessage, setUserMessage] = useState("");
   const [userSearchInput, setUserSearchInput] = useState("");
-  const [showSearchRecommendation, setShowSearchRecommendation] =
-    useState(false);
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
@@ -23,7 +21,7 @@ const PostList = (data) => {
   };
 
   const sortItem = (e) => {
-    let sort = e ? e.target.value : "Views";
+    let sort = e ? e.target.value : "New";
     switch (sort) {
       case "Likes": {
         setUserMessage("The most liked posts:");
@@ -33,6 +31,16 @@ const PostList = (data) => {
       case "Views": {
         setUserMessage("The most viewed posts:");
         setSortedData((prev) => [...prev].sort((a, b) => b.views - a.views));
+        break;
+      }
+      case "New": {
+        setUserMessage("The most recent posts:");
+        setSortedData((prev) => [...prev].sort((a, b) => b.date - a.date));
+        break;
+      }
+      case "Oldest": {
+        setUserMessage("The oldest posts:");
+        setSortedData((prev) => [...prev].sort((a, b) => a.date - b.date));
         break;
       }
       default: {
@@ -46,7 +54,7 @@ const PostList = (data) => {
     sortItem();
   }, []);
 
-  console.log(data);
+  console.log(sortedData);
   return (
     <>
       <div className="search-element">
@@ -62,15 +70,15 @@ const PostList = (data) => {
           <h2>{userMessage}</h2>
           <div className="sort-pagination">
             <select
-              defaultValue="Views"
+              defaultValue="New"
               name="sorting"
               id="sorting"
               onChange={sortItem}
             >
+              <option value="New">Recent</option>
+              <option value="Oldest">Oldest</option>
               <option value="Views">Most Viewed</option>
               <option value="Likes">Most Liked</option>
-              <option value="New">Recent (wip)</option>
-              <option value="Oldest">Oldest (wip)</option>
             </select>
             <ReactPaginate
               id="pagination"
@@ -114,7 +122,6 @@ const PostList = (data) => {
                     <h6>Views: {element.views}</h6>
                     <div className="result-analitics-container">
                       <div>Likes: {element.likes}</div>
-                      <div>Added: {element.date}</div>
                     </div>
                   </div>
                 </div>
