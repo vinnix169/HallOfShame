@@ -35,12 +35,20 @@ const PostList = (data) => {
       }
       case "New": {
         setUserMessage("The most recent posts:");
-        setSortedData((prev) => [...prev].sort((a, b) => b.date - a.date));
+        setSortedData((prev) =>
+          [...prev].sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          )
+        );
         break;
       }
       case "Oldest": {
         setUserMessage("The oldest posts:");
-        setSortedData((prev) => [...prev].sort((a, b) => a.date - b.date));
+        setSortedData((prev) =>
+          [...prev].sort(
+            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          )
+        );
         break;
       }
       default: {
@@ -48,13 +56,12 @@ const PostList = (data) => {
       }
     }
   };
-
+  console.log(data);
   useEffect(() => {
     setSortedData((prev) => [...data.data]);
     sortItem();
   }, []);
 
-  console.log(sortedData);
   return (
     <>
       <div className="search-element">

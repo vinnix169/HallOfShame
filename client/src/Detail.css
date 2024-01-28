@@ -1,29 +1,40 @@
-
 .detail-container {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-    padding: 20px;
-    background-color: #222529;
-    border-radius: 30px;
-    box-shadow: 0 0 10px 2px rgb(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  padding: 20px;
+  background-color: #222529;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 2px rgb(0, 0, 0, 0.2);
 }
 
 .detail-image {
-    background-size:contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 10px;
-    width: 70vh;
-    height: 70vh;
-    border-radius: 20px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px;
+  width: 70vh;
+  height: 70vh;
+  border-radius: 20px;
 }
 
 .detail-desc {
-    padding-top: 20px;
+  padding-top: 20px;
+}
+
+.detail-desc div {
+  padding: 5px 0px;
+}
+
+.like-container {
+  display: flex;
 }
 
 .detail-likes {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-delete-container input {
+  background-color: red;
 }

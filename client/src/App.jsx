@@ -9,6 +9,7 @@ import Upload from "./Upload";
 import Categories from "./Catgories";
 import Login from "./Login";
 import PostDetail from "./PostDetail";
+import Deleted from "./Deleted";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/deleted" element={<Deleted />} />
           <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </div>

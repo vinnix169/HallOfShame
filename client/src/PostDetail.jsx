@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import useFetch from "./useFetch";
 import "./Detail.css";
 import { useEffect, useState } from "react";
@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 const PostDetail = () => {
   const { id } = useParams();
   const { data, pending, error } = useFetch("http://localhost:8000/post/" + id);
-  console.log(data);
   const [displayDate, setDisplayedDate] = useState("");
+  const [displayLikes, setDisplayedLike] = useState(0);
+  const navigateDeleted = useNavigate();
 
   const convertDate = () => {
     const originalDate = new Date(data.date);
@@ -23,9 +24,51 @@ const PostDetail = () => {
     //set date for sortedData here
   };
 
+  const handleDelete = () => {
+    fetch("http://localhost:8000/deletePost/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("Post deleted successfully");
+          // Handle any additional logic after successful deletion
+        } else {
+          console.error("Failed to delete post");
+        }
+      })
+      .catch((err) => console.error(err));
+    navigateDeleted("/deleted");
+  };
+
+  const handleLike = () => {
+    const formData = new FormData();
+    formData.append("likes", data.likes + 1);
+    setDisplayedLike(data.likes + 1);
+
+    fetch("http://localhost:8000/like/" + id, {
+      method: "PUT",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {})
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     if (data != null) {
       convertDate();
+      setDisplayedLike((prev) => data.likes);
+
+      const formData = new FormData();
+      formData.append("views", data.views + 1);
+
+      fetch("http://localhost:8000/view/" + id, {
+        method: "PUT",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {})
+        .catch((err) => console.error(err));
     }
   }, [data]);
 
@@ -45,10 +88,22 @@ const PostDetail = () => {
             <div>Description:</div>
             <div>{data.description}</div>
             <div className="detail-likes">
+              <div className="like-container">
+                <div>Likes: {displayLikes}</div>
+                <input
+                  type="button"
+                  value=""
+                  className="like"
+                  onClick={handleLike}
+                />
+              </div>
+
               <div>Views: {data.views}</div>
-              <div>Likes: {data.likes}</div>
-              <div>Added:{displayDate}</div>
             </div>
+            <div>Added: {displayDate}</div>
+          </div>
+          <div className="detail-delete-container">
+            <input type="button" value="Delete" onClick={handleDelete} />
           </div>
         </div>
       )}

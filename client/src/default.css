@@ -14,7 +14,8 @@ main {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
@@ -41,10 +42,17 @@ select option {
   border: black 1px solid;
 }
 
+input[type="submit"] {
+  width: 100px;
+  border-radius: 10px;
+  margin: auto;
+}
+
 input[type="button"] {
   background-color: #202325;
   border: rgb(255, 255, 255) 1px solid;
   border-radius: 6px;
+  padding: 3px 5px;
 }
 
 input[type="button"]:hover {
