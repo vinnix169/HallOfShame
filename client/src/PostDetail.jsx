@@ -86,9 +86,11 @@ const PostDetail = () => {
             }}
           ></div>
           <div className="detail-desc">
-            <div>{data.title}</div>
-            <div>Description:</div>
-            <div>{data.description}</div>
+            <h3>{data.title}</h3>
+            <div className="description-box">
+              <h4>Description:</h4>
+              <div>{data.description}</div>
+            </div>
             <div className="detail-likes">
               <div className="like-container">
                 <div>Likes: {displayLikes}</div>

@@ -95,3 +95,21 @@
   position: absolute;
   padding: 20px;
 }
+
+.description-box {
+  background-color: #24282c;
+  border-radius: 20px;
+  box-shadow: 0 0 6px 0px rgb(0, 0, 0, 0.3);
+}
+
+.description-box > h4 {
+  margin: 10px;
+}
+
+.description-box > div {
+  margin-left: 20px;
+}
+
+h3 {
+  margin-bottom: 20px;
+}

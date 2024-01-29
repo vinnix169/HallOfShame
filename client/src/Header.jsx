@@ -28,8 +28,12 @@ const Header = (onSearch) => {
 
             <div className={`selected-acc-${accountSelected}`}>
               <ul>
-                <li>Log in</li>
-                <li>Register</li>
+                <Link to={"/login"}>
+                  <li onClick={(e) => setAccountSelected(false)}>Login</li>
+                </Link>
+                <Link to={"/register"}>
+                  <li onClick={(e) => setAccountSelected(false)}>Register</li>
+                </Link>
               </ul>
             </div>
           </div>

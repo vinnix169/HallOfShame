@@ -30,10 +30,11 @@ router.get("/get", async (req, res) => {
 });
 
 //Get a post by id
-router.get("get/:id", async (req, res) => {
+router.get("/get/:id", async (req, res) => {
   try {
     //Finding object by id
     const result = await PostModel.findById(req.params.id);
+    console.log(result);
     res.json(result);
     //Throw error if there is one
   } catch (err) {
