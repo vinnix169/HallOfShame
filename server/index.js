@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const usersRoute = require("./routes/UsersRoute");
 const postsRoute = require("./routes/PostsRoute");
 
@@ -9,7 +10,11 @@ const postsRoute = require("./routes/PostsRoute");
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
-
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 // Routes setup
 app.use("/user", usersRoute);
 app.use("/post", postsRoute);

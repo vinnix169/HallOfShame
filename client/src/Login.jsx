@@ -4,42 +4,39 @@ import "./Forms.css";
 const Login = () => {
   const [userData, setUserData] = useState({
     email: String,
-    username: String,
     password: String,
-    avatar: String,
   });
+
+  const loginData = null;
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8000/user/login", {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // Itt láthatod a válaszadatot
+      } else {
+        console.error("Could not fetch");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+  console.log(loginData);
+  console.log(JSON.stringify(userData));
 
   return (
     <main>
       <main className="form-main">
-        <form action="submit">
-          <section className="form-section-preview-avt">
-            <div className="form-upload-preview-avt"></div>
-          </section>
-          <section className="form-section-img">
-            <div>
-              <div>Choose your avatar:</div>
-            </div>
-            <div>
-              <label className="upload-btn" htmlFor="file"></label>
-              <input
-                className="upload-btn-hidden"
-                id="file"
-                type="file"
-                accept="image/*"
-              />
-            </div>
-          </section>
-
-          <section className="form-section">
-            <div className="form-input-usr-img"></div>
-            <input
-              className="form-input"
-              required
-              type="text"
-              placeholder="Username"
-            />
-          </section>
+        <form onSubmit={(e) => handleLogin(e)}>
           <section className="form-section">
             <div className="form-input-email-img"></div>
             <input
@@ -47,6 +44,10 @@ const Login = () => {
               required
               type="email"
               placeholder="Email"
+              value={userData.email}
+              onChange={(e) =>
+                setUserData((prev) => ({ ...prev, email: e.target.value }))
+              }
             />
           </section>
           <section className="form-section">
@@ -56,14 +57,13 @@ const Login = () => {
               required
               type="password"
               placeholder="Password"
+              value={userData.password}
+              onChange={(e) =>
+                setUserData((prev) => ({ ...prev, password: e.target.value }))
+              }
             />
           </section>
-          <input
-            className="form-input"
-            type="submit"
-            value="Login"
-            onSubmit={"a"}
-          />
+          <input className="form-input" type="submit" value="Login" />
         </form>
       </main>
     </main>
