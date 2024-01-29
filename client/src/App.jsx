@@ -10,6 +10,7 @@ import Categories from "./Catgories";
 import Login from "./Login";
 import PostDetail from "./PostDetail";
 import Deleted from "./Deleted";
+import Uploaded from "./Uploaded";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/deleted" element={<Deleted />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/uploaded" element={<Uploaded />} />
         </Routes>
       </div>
     </Router>

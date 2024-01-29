@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Forms.css";
-import Uploaded from "./Uploaded";
+import { useNavigate } from "react-router-dom";
 
 const Upload = () => {
   const [userData, setUserData] = useState({
@@ -18,6 +18,8 @@ const Upload = () => {
   });
 
   const [isSumbitted, setIsSubmitted] = useState("none");
+
+  const navigate = useNavigate();
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -69,13 +71,12 @@ const Upload = () => {
         })
         .catch((err) => console.error(err));
     }
+    navigate("/uploaded");
   };
 
   return (
     <>
-      <div style={{ display: isSumbitted }}>
-        <Uploaded></Uploaded>
-      </div>
+      <div style={{ display: isSumbitted }}></div>
       <main className="form-main">
         <form onSubmit={(e) => handleSubmit(e)}>
           <section className="form-section">
