@@ -60,7 +60,7 @@ const Upload = () => {
       formData.append("image", userData.image, userData.image.name);
       console.log(formData.get("image"));
 
-      fetch("http://localhost:8000/upload", {
+      fetch("http://localhost:8000/post/createPost", {
         method: "POST",
         body: formData,
       })

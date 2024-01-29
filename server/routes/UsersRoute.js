@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const UserModel = require("../models/User");
 
 router.get("/", (req, res) => {
   res.send({ data: "Post Get" });

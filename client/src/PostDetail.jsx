@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 
 const PostDetail = () => {
   const { id } = useParams();
-  const { data, pending, error } = useFetch("http://localhost:8000/post/" + id);
+  const { data, pending, error } = useFetch(
+    "http://localhost:8000/post/get/" + id
+  );
   const [displayDate, setDisplayedDate] = useState("");
   const [displayLikes, setDisplayedLike] = useState(0);
   const navigateDeleted = useNavigate();
@@ -25,7 +27,7 @@ const PostDetail = () => {
   };
 
   const handleDelete = () => {
-    fetch("http://localhost:8000/deletePost/" + id, {
+    fetch("http://localhost:8000/post/delete/" + id, {
       method: "DELETE",
     })
       .then((res) => {
@@ -45,7 +47,7 @@ const PostDetail = () => {
     formData.append("likes", data.likes + 1);
     setDisplayedLike(data.likes + 1);
 
-    fetch("http://localhost:8000/like/" + id, {
+    fetch("http://localhost:8000/post/updateLikes/" + id, {
       method: "PUT",
       body: formData,
     })
@@ -62,7 +64,7 @@ const PostDetail = () => {
       const formData = new FormData();
       formData.append("views", data.views + 1);
 
-      fetch("http://localhost:8000/view/" + id, {
+      fetch("http://localhost:8000/post/updateViews/" + id, {
         method: "PUT",
         body: formData,
       })
