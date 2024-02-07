@@ -8,6 +8,7 @@ const PostDetail = () => {
   const { data, pending, error } = useFetch(
     "http://localhost:8000/post/get/" + id
   );
+  const [isAdmin, setIsAdmin] = useState(false);
   const [displayDate, setDisplayedDate] = useState("");
   const [displayLikes, setDisplayedLike] = useState(0);
   const navigateDeleted = useNavigate();
@@ -72,6 +73,8 @@ const PostDetail = () => {
         .then((data) => {})
         .catch((err) => console.error(err));
     }
+
+    
   }, [data]);
 
   return (

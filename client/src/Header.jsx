@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useFetch from "./useFetch";
 
 const Header = (onSearch) => {
   const [accountSelected, setAccountSelected] = useState(false);
   const [searchInput, setSearchInput] = useState(null);
+  const {user, pending, error} = useFetch("http://localhost:8000/user/get")
 
   const selectAccount = () => {
     if (accountSelected) {
@@ -13,17 +15,20 @@ const Header = (onSearch) => {
     }
   };
 
+  
+
   const handleSearch = () => {
     onSearch(searchInput);
   };
-
+  console.log("Logging user:")
+  console.log(user)
   return (
     <>
       <header>
         <div className="header-container">
           <div className="header-upper-container">
             <div className="hos-logo">Wall of Shame</div>
-            <div className="header-upper-space"></div>
+            {pending && <div className="header-upper-space">Welcome {user.username}</div>}
             <a className="header-account" onClick={selectAccount}></a>
 
             <div className={`selected-acc-${accountSelected}`}>

@@ -11,8 +11,14 @@ router.use(
   })
 );
 
+
+
 router.get("/get", (req, res) => {
-  res.send({ data: "Post Get" });
+  if (req.session.username) {
+      res.json({valid: true, username: req.session.username})
+  } else {
+    res.json({valid: false, username: "none"})
+  }
 });
 
 router.get("/profile", async (req, res) => {
@@ -39,10 +45,9 @@ router.post("/login", async (req, res) => {
       isAdmin: user.isAdmin,
     };
 
-    res.json({
-      username: user.username,
-      isAdmin: user.isAdmin,
-    });
+    res.json(
+      req.session.user
+    );
 
     console.log(user.email);
   } catch (err) {
