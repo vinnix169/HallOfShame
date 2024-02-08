@@ -25,6 +25,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  tags: {
+    type: [],
+    required: false,
+  },
 });
 
 const PostModel = mongoose.model("posts", PostSchema);

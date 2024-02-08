@@ -8,6 +8,7 @@ const PostDetail = () => {
   const { data, pending, error } = useFetch(
     "http://localhost:8000/post/get/" + id
   );
+
   const [isAdmin, setIsAdmin] = useState(false);
   const [displayDate, setDisplayedDate] = useState("");
   const [displayLikes, setDisplayedLike] = useState(0);
@@ -61,7 +62,6 @@ const PostDetail = () => {
     if (data != null) {
       convertDate();
       setDisplayedLike((prev) => data.likes);
-
       const formData = new FormData();
       formData.append("views", data.views + 1);
 
@@ -73,9 +73,11 @@ const PostDetail = () => {
         .then((data) => {})
         .catch((err) => console.error(err));
     }
-
-    
   }, [data]);
+
+  if (data) {
+    console.log(data);
+  }
 
   return (
     <main>
@@ -108,6 +110,13 @@ const PostDetail = () => {
               <div>Views: {data.views}</div>
             </div>
             <div>Added: {displayDate}</div>
+            <div className="tags">
+              {data && (
+                data.tags.map((item, index) => {
+                  <div key={index}>{item}</div>;
+                })
+                ) console.log()}
+            </div>
           </div>
           <div className="detail-delete-container">
             <input type="button" value="Delete" onClick={handleDelete} />

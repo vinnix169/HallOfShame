@@ -27,3 +27,8 @@
 .detail-delete-container input {
   background-color: red;
 }
+
+.tags {
+  height: 80px;
+  width: 400px;
+}
