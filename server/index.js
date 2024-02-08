@@ -19,6 +19,7 @@ app.use(
 app.use("/user", usersRoute);
 app.use("/post", postsRoute);
 
+
 // Connect to MongoDB
 mongoose
   .connect(

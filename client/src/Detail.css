@@ -28,7 +28,23 @@
   background-color: red;
 }
 
+.tags-title {
+  margin-top: 50px;
+}
+
 .tags {
-  height: 80px;
-  width: 400px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tags div {
+  background-color: #24282c;
+  color: #49525a;
+  padding: 3px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.tags div::before {
+  content: "#";
 }

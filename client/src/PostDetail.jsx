@@ -1,4 +1,4 @@
-import { Navigate, useParams, useNavigate } from "react-router-dom";
+import { Navigate, useParams, useNavigate, Link } from "react-router-dom";
 import useFetch from "./useFetch";
 import "./Detail.css";
 import { useEffect, useState } from "react";
@@ -17,11 +17,9 @@ const PostDetail = () => {
   const convertDate = () => {
     const originalDate = new Date(data.date);
 
-    const formattedDate = `${originalDate.getFullYear()}.${
-      originalDate.getMonth() + 1
-    }.${originalDate.getDate()} ${originalDate.getHours()}:${
-      (originalDate.getMinutes() < 10 ? "0" : "") + originalDate.getMinutes()
-    }`;
+    const formattedDate = `${originalDate.getFullYear()}.${originalDate.getMonth() + 1
+      }.${originalDate.getDate()} ${originalDate.getHours()}:${(originalDate.getMinutes() < 10 ? "0" : "") + originalDate.getMinutes()
+      }`;
     console.log(originalDate);
     setDisplayedDate(formattedDate);
 
@@ -54,7 +52,7 @@ const PostDetail = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {})
+      .then((data) => { })
       .catch((err) => console.error(err));
   };
 
@@ -70,7 +68,7 @@ const PostDetail = () => {
         body: formData,
       })
         .then((res) => res.json())
-        .then((data) => {})
+        .then((data) => { })
         .catch((err) => console.error(err));
     }
   }, [data]);
@@ -110,12 +108,12 @@ const PostDetail = () => {
               <div>Views: {data.views}</div>
             </div>
             <div>Added: {displayDate}</div>
+            <h6 className="tags-title">Tags:</h6>
             <div className="tags">
-              {data && (
-                data.tags.map((item, index) => {
-                  <div key={index}>{item}</div>;
-                })
-                ) console.log()}
+
+              {data &&
+                data.tags.map((item, index) =>
+                  <Link to={`/tags/${item}`}><div key={index}>{item}</div></Link>)}
             </div>
           </div>
           <div className="detail-delete-container">

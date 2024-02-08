@@ -12,6 +12,7 @@ import PostDetail from "./PostDetail";
 import Deleted from "./Deleted";
 import Uploaded from "./Uploaded";
 import Register from "./Register";
+import Tag from "./Tag";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/deleted" element={<Deleted />} />
           <Route path="/post/get/:id" element={<PostDetail />} />
           <Route path="/uploaded" element={<Uploaded />} />
+          <Route path="/tags/:tagName" element={<Tag/>}/>
         </Routes>
       </div>
     </Router>

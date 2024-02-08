@@ -34,7 +34,6 @@ router.get("/get/:id", async (req, res) => {
   try {
     //Finding object by id
     const result = await PostModel.findById(req.params.id);
-    console.log(result);
     res.json(result);
     //Throw error if there is one
   } catch (err) {
@@ -42,6 +41,23 @@ router.get("/get/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+router.get("/get/:tagName", async (req, res) => {
+  try {
+    const tagName = req.params.tagName;
+    console.log(tagName);
+
+    const result = await PostModel.findOne({ tags: tagName });
+    console.log(result);
+
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
 
 //Post new created post
 router.post("/createPost", upload.single("image"), async (req, res) => {
