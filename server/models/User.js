@@ -13,17 +13,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  password: {
+  pswHash: {
     type: String,
     required: true,
   },
   pfp: {
     type: String,
     required: true,
-  },
-  isAdmin: {
-    type: Boolean,
-    require: true,
   },
 });
 

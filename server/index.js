@@ -1,13 +1,14 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const usersRoute = require("./routes/UsersRoute");
-const postsRoute = require("./routes/PostsRoute");
+const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
 
 // Middleware setup
-app.use(cors());
+const app = express();
+const PORT = process.env.PORT || 8000;
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use(
@@ -15,15 +16,22 @@ app.use(
     extended: true,
   })
 );
-// Routes setup
-app.use("/user", usersRoute);
-app.use("/post", postsRoute);
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 
+// Routes setup
+app.use("/user", require("./routes/UsersRoute"));
+app.use("/post", require("./routes/PostsRoute"));
 
 // Connect to MongoDB
 mongoose
   .connect(
-    "mongodb+srv://remibende:Asdman169@hallofshamecluster.ryucxpo.mongodb.net/hallofshamedb"
+    process.env.MCD_CON ||
+      "mongodb+srv://remibende:Asdman169@hallofshamecluster.ryucxpo.mongodb.net/hallofshamedb"
   )
   .then(() => {
     console.log("MongoDB connected successfully");
@@ -32,7 +40,6 @@ mongoose
     console.error("MongoDB connection error:", err);
   });
 
-const PORT = 8000;
 app.listen(PORT, () => {
   console.log("Server started running at port:" + PORT);
 });
