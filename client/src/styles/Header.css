@@ -1,0 +1,76 @@
+.header-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-account {
+    width: 35px;
+    height: 35px;
+    border: rgb(219, 219, 219) 2px solid;
+    border-radius: 66px;
+    background-image: url("../img/DefaulUsr.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.selected-acc-false {
+    display: none;
+}
+
+.selected-acc-true {
+    position: absolute;
+    top: 20px;
+    right: 24vw;
+    width: 150px;
+    height: auto;
+    background-color: #151718;
+    border-radius: 10px;
+}
+
+.selected-acc-true li {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.selected-acc-true li:hover {
+    background-color: #353a3d;
+}
+
+.hos-logo {
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-size: 30px;
+}
+
+.header-upper-space {
+    width: 40vw;
+}
+
+.header-container ul {
+    list-style: none;
+}
+
+.header-upper-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-lower-container {
+    width: 100%;
+    box-shadow: 0 1px 1px 1px rgb(0, 0, 0, 0.2);
+}
+
+.header-lower-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px 10px;
+}

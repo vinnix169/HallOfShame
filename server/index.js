@@ -1,45 +1,40 @@
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
+const cp = require("cookie-parser");
+const cors = require("cors");
+const path = require("path");
 
-// Middleware setup
+dotenv.config();
+
+//server setup
+
+// Server setup
 const app = express();
-const PORT = process.env.PORT || 8000;
-
+app.use(
+    cors({
+        origin: ["http://localhost:3000"],
+        credentials: true,
+    })
+);
+app.use(cp());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-  })
-);
 
-// Routes setup
-app.use("/user", require("./routes/UsersRoute"));
-app.use("/post", require("./routes/PostsRoute"));
-
-// Connect to MongoDB
-mongoose
-  .connect(
-    process.env.MCD_CON ||
-      "mongodb+srv://remibende:Asdman169@hallofshamecluster.ryucxpo.mongodb.net/hallofshamedb"
-  )
-  .then(() => {
-    console.log("MongoDB connected successfully");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-  });
-
-app.listen(PORT, () => {
-  console.log("Server started running at port:" + PORT);
+const PORT = process.env.PORT || 8000;
+app.get("/", (req, res) => {
+    res.status(200).send({ message: "RESPONSE OK" });
 });
+//Connect to MongoDB
+
+mongoose
+    .connect(process.env.MDB_CON, console.log("Connected to MongoDB"))
+    .catch((err) => console.error(err));
+
+//Routers
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/user", require("./routers/userRouter"));
+app.use("/post", require("./routers/postRouter"));
+
+app.listen(PORT, () =>
+    console.log(`Server started. Listening on port ${PORT}`)
+);
