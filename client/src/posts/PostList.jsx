@@ -56,7 +56,7 @@ const PostList = ({ data }) => {
       }
     }
   };
-  console.log(data);
+
   useEffect(() => {
     setSortedData((prev) => [...data]);
     sortItem();
@@ -116,7 +116,7 @@ const PostList = ({ data }) => {
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
             <div key={index} className="result-grid-element">
-              <Link to={`/post/get/${element._id}`}>
+              <Link to={`/post/${element._id}`}>
                 <div className="result-element-container">
                   <div
                     className="result-img"

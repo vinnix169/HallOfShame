@@ -1,47 +1,53 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../lib/AuthContex";
+import AuthContext from "../lib/AuthContext";
 
 const Register = () => {
-  const [userData, setUserData] = useState({})
-  const { getLoggedIn } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const [userData, setUserData] = useState({});
+  const { getLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!userData.avatar) {
-      setUserData((prev) => ({ ...prev, avatar: "" }))
+      setUserData((prev) => ({ ...prev, avatar: "" }));
     }
     try {
       const formData = new FormData();
-      formData.append('avatar', userData.avatar);  // Assuming 'file' is your File object
-      formData.append('username', userData.username);
-      formData.append('email', userData.email);
-      formData.append('password', userData.password);
-      formData.append('passwordAgain', userData.passwordAgain);
+      formData.append("avatar", userData.avatar); // Assuming 'file' is your File object
+      formData.append("username", userData.username);
+      formData.append("email", userData.email);
+      formData.append("password", userData.password);
+      formData.append("passwordAgain", userData.passwordAgain);
 
-      axios.post('http://localhost:8000/user/register', formData);
+      axios.post("http://localhost:8000/user/register", formData);
 
-      getLoggedIn()
-      navigate("/")
+      getLoggedIn();
+      navigate("/");
+      window.location.reload();
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
+  };
 
-
-  }
-
-  console.log(userData)
+  console.log(userData);
   return (
     <main>
       <main className="form-main">
         <h1 className="form-title">Register</h1>
         <form onSubmit={(e) => handleRegister(e)}>
           <section className="form-section-preview-avt">
-            {userData.avatar && <div className="form-upload-preview-avt" style={{
-              backgroundImage: `url(${URL.createObjectURL(userData.avatar)})`
-            }}></div>}
+            {userData.avatar && (
+              <div
+                className="form-upload-preview-avt"
+                style={{
+                  backgroundImage: `url(${URL.createObjectURL(
+                    userData.avatar
+                  )})`,
+                }}
+              ></div>
+            )}
           </section>
           <section className="form-section-img">
             <div>
@@ -54,8 +60,12 @@ const Register = () => {
                 id="file"
                 type="file"
                 accept="image/*"
-                onChange={(e) => setUserData((prev) => ({ ...prev, avatar: e.target.files[0] }))}
-
+                onChange={(e) =>
+                  setUserData((prev) => ({
+                    ...prev,
+                    avatar: e.target.files[0],
+                  }))
+                }
               />
             </div>
           </section>
@@ -96,7 +106,6 @@ const Register = () => {
               value={userData.password}
               onChange={(e) =>
                 setUserData((prev) => ({ ...prev, password: e.target.value }))
-
               }
             />
           </section>
@@ -109,8 +118,10 @@ const Register = () => {
               placeholder="Verify Password"
               value={userData.passwordAgain}
               onChange={(e) =>
-                setUserData((prev) => ({ ...prev, passwordAgain: e.target.value }))
-
+                setUserData((prev) => ({
+                  ...prev,
+                  passwordAgain: e.target.value,
+                }))
               }
             />
           </section>

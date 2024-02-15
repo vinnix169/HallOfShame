@@ -1,33 +1,34 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import AuthContext from "../lib/AuthContex";
-
+import AuthContext from "../lib/AuthContext";
 
 const Login = () => {
   const [userData, setUserData] = useState({
-    email: String,
-    password: String,
+    email: "",
+    password: "",
   });
 
-  const { getLoggedIn } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { getLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/user/login", userData);
+      const response = await axios.post(
+        "http://localhost:8000/user/login",
+        userData
+      );
 
-      getLoggedIn();
       navigate("/");
-
+      window.location.reload();
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
   return (
-    <main>
+    <div>
       <main className="form-main">
         <form onSubmit={(e) => handleLogin(e)}>
           <section className="form-section">
@@ -58,11 +59,13 @@ const Login = () => {
           </section>
           <input className="form-input" type="submit" value="Login" />
           <Link to="/register">
-            <div className="redirect-login">New around here? Register here!</div>
+            <div className="redirect-login">
+              New around here? Register here!
+            </div>
           </Link>
         </form>
       </main>
-    </main>
+    </div>
   );
 };
 

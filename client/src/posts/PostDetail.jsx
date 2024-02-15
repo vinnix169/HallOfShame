@@ -1,128 +1,60 @@
 import { Navigate, useParams, useNavigate, Link } from "react-router-dom";
-
-
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const PostDetail = () => {
-  /*const { id } = useParams();
-  const { data, pending, error } = useFetch(
-    "http://localhost:8000/post/get/" + id
-  );
+  const { id } = useParams();
+  const [postData, setPostData] = useState([]);
 
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [displayDate, setDisplayedDate] = useState("");
-  const [displayLikes, setDisplayedLike] = useState(0);
-  const navigateDeleted = useNavigate();
-
-  const convertDate = () => {
-    const originalDate = new Date(data.date);
-
-    const formattedDate = `${originalDate.getFullYear()}.${originalDate.getMonth() + 1
-      }.${originalDate.getDate()} ${originalDate.getHours()}:${(originalDate.getMinutes() < 10 ? "0" : "") + originalDate.getMinutes()
-      }`;
-    console.log(originalDate);
-    setDisplayedDate(formattedDate);
-
-    //set date for sortedData here
-  };
-
-  const handleDelete = () => {
-    fetch("http://localhost:8000/post/delete/" + id, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log("Post deleted successfully");
-          // Handle any additional logic after successful deletion
-        } else {
-          console.error("Failed to delete post");
-        }
-      })
-      .catch((err) => console.error(err));
-    navigateDeleted("/deleted");
-  };
-
-  const handleLike = () => {
-    const formData = new FormData();
-    formData.append("likes", data.likes + 1);
-    setDisplayedLike(data.likes + 1);
-
-    fetch("http://localhost:8000/post/updateLikes/" + id, {
-      method: "PUT",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((data) => { })
-      .catch((err) => console.error(err));
+  const getPostData = async () => {
+    try {
+      const { data: getPost } = await axios.get(
+        "http://localhost:8000/post/" + id
+      );
+      setPostData(getPost.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    if (data != null) {
-      convertDate();
-      setDisplayedLike((prev) => data.likes);
-      const formData = new FormData();
-      formData.append("views", data.views + 1);
-
-      fetch("http://localhost:8000/post/updateViews/" + id, {
-        method: "PUT",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) => { })
-        .catch((err) => console.error(err));
-    }
-  }, [data]);
-
-  if (data) {
-    console.log(data);
-  }
-
+    getPostData();
+  }, []);
+  console.log(postData);
   return (
-    <main>
-      {pending && <div>Loading...</div>}
-      {data && (
-        <div className="detail-container">
-          <div
-            className="detail-image"
-            style={{
-              backgroundImage: `url("http://localhost:8000/uploads/${data.image}")`,
-            }}
-          ></div>
-          <div className="detail-desc">
-            <h3>{data.title}</h3>
-            <div className="description-box">
-              <h4>Description:</h4>
-              <div>{data.description}</div>
-            </div>
-            <div className="detail-likes">
-              <div className="like-container">
-                <div>Likes: {displayLikes}</div>
-                <input
-                  type="button"
-                  value=""
-                  className="like"
-                  onClick={handleLike}
-                />
+    <>
+      {postData.post && (
+        <div className="Post-Detail">
+          <main>
+            <div
+              className="detail-image"
+              style={{
+                backgroundImage: `url("http://localhost:8000/uploads/${postData.post.img}")`,
+              }}
+            ></div>
+            <div className="detail-text">
+              <div>{postData.post.title}</div>
+              <div>{postData.post.desc}</div>
+              <div className="detail-reaction">
+                <div>Views: {postData.post.views}</div>
+                <div>Likes: {postData.post.likes}</div>
               </div>
-
-              <div>Views: {data.views}</div>
+              <div className="detail-creator">
+                Created by:
+                <div
+                  className="detail-creator-avt"
+                  style={{
+                    backgroundImage: `url("http://localhost:8000/uploads/${postData.user.avatar}")`,
+                  }}
+                ></div>
+                {postData.user.username}
+              </div>
             </div>
-            <div>Added: {displayDate}</div>
-            <h6 className="tags-title">Tags:</h6>
-            <div className="tags">
-
-              {data &&
-                data.tags.map((item, index) =>
-                  <Link to={`/tags/${item}`}><div key={index}>{item}</div></Link>)}
-            </div>
-          </div>
-          <div className="detail-delete-container">
-            <input type="button" value="Delete" onClick={handleDelete} />
-          </div>
+          </main>
         </div>
       )}
-    </main>
-  );*/
+    </>
+  );
 };
 
 export default PostDetail;

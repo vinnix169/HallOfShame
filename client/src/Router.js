@@ -1,4 +1,4 @@
-import AuthContext from "./lib/AuthContex";
+import AuthContext from "./lib/AuthContext";
 import { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./layout/Navbar";
@@ -13,32 +13,32 @@ import Register from "./auth/Register";
 import Tag from "./Tag";
 
 function Router() {
-    const { loggedIn } = useContext(AuthContext);
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                {loggedIn === false && (
-                    <>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                    </>
-                )}
+  const { loggedIn } = useContext(AuthContext);
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        {loggedIn === false && (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </>
+        )}
 
-                {loggedIn === true && (
-                    <>
-                        <Route path="/deleted" element={<Deleted />} />
-                        <Route path="/post/get/:id" element={<PostDetail />} />
-                        <Route path="/uploaded" element={<Uploaded />} />
-                        <Route path="/tags/:tagName" element={<Tag />} />
-                        <Route path="/" element={<Main />} />
-                        <Route path="/upload" element={<Upload />} />
-                        <Route path="/categories" element={<Categories />} />
-                    </>
-                )}
-            </Routes>
-        </BrowserRouter>
-    );
+        {loggedIn === true && (
+          <>
+            <Route path="/deleted" element={<Deleted />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/uploaded" element={<Uploaded />} />
+            <Route path="/tags/:tagName" element={<Tag />} />
+            <Route exact path="/" element={<Main />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/categories" element={<Categories />} />
+          </>
+        )}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default Router;
