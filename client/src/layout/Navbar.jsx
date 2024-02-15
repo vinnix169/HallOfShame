@@ -38,20 +38,19 @@ const Header = (onSearch) => {
   }, []);
   return (
     <>
-      <header>
+      <header id="navbar">
         <div className="header-container">
           <div className="header-upper-container">
             <div className="hos-logo">Wall of Shame</div>
             <div className="header-upper-space">
-              {loggedIn && <span>Welcome {currentUser.username}</span>}
+              {loggedIn && <span>Welcome {currentUser.username}!</span>}
             </div>
             <a
               className="header-account"
               onClick={selectAccount}
               style={{
-                backgroundImage: `url("http://localhost:8000/uploads/${
-                  loggedIn ? currentUser.avatar : "default-avatar.jpg"
-                }")`,
+                backgroundImage: `url("http://localhost:8000/uploads/${loggedIn ? currentUser.avatar : "default-avatar.jpg"
+                  }")`,
               }}
             ></a>
             <div className={`selected-acc-${accountSelected}`}>

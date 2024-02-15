@@ -1,3 +1,4 @@
+import axios from "axios";
 import UseScroll from "../lib/UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
@@ -9,8 +10,6 @@ const PostList = ({ data }) => {
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  let tempSearch = "";
-
   const [sortedData, setSortedData] = useState([]);
   const [userMessage, setUserMessage] = useState("");
   const [userSearchInput, setUserSearchInput] = useState("");
@@ -18,6 +17,7 @@ const PostList = ({ data }) => {
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
     UseScroll("#root", "#pagination", 1000, "easeOutQuint");
+
   };
 
   const sortItem = (e) => {
@@ -56,6 +56,11 @@ const PostList = ({ data }) => {
       }
     }
   };
+
+  const handleViews = async ({ _id }) => {
+    console.log(_id)
+    const result = await axios.put("http://localhost:8000/post/view", { id: _id })
+  }
 
   useEffect(() => {
     setSortedData((prev) => [...data]);
@@ -116,7 +121,7 @@ const PostList = ({ data }) => {
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
             <div key={index} className="result-grid-element">
-              <Link to={`/post/${element._id}`}>
+              <Link to={`/post/${element._id}`} onClick={(e) => handleViews(element)}>
                 <div className="result-element-container">
                   <div
                     className="result-img"

@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../lib/AuthContext";
 
 const Register = () => {
   const [userData, setUserData] = useState({});
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getLoggedIn, loggedIn } = useContext(AuthContext);
+  const [error, setError] = useState({})
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -21,34 +22,48 @@ const Register = () => {
       formData.append("password", userData.password);
       formData.append("passwordAgain", userData.passwordAgain);
 
-      axios.post("http://localhost:8000/user/register", formData);
+      await axios.post("http://localhost:8000/user/register", formData);
+
 
       getLoggedIn();
+
       navigate("/");
-      window.location.reload();
+
+      if (loggedIn) {
+        window.location.reload();
+      }
+
     } catch (error) {
-      console.error(error);
+      setError((prev) => ({ ...prev, errors: error.response.data.Error }))
     }
   };
 
-  console.log(userData);
+  const memoURL = useMemo(() => {
+    if (userData.avatar) {
+      return URL.createObjectURL(userData.avatar)
+    }
+  }, [userData.avatar])
+
+  console.log(error);
   return (
     <main>
       <main className="form-main">
         <h1 className="form-title">Register</h1>
+
         <form onSubmit={(e) => handleRegister(e)}>
+
           <section className="form-section-preview-avt">
             {userData.avatar && (
               <div
                 className="form-upload-preview-avt"
                 style={{
-                  backgroundImage: `url(${URL.createObjectURL(
-                    userData.avatar
-                  )})`,
+                  backgroundImage: `url(${memoURL
+                    })`,
                 }}
               ></div>
             )}
           </section>
+
           <section className="form-section-img">
             <div>
               <div>Choose your avatar:</div>
@@ -69,7 +84,7 @@ const Register = () => {
               />
             </div>
           </section>
-
+          {error && <div className="form-error">{error.errors}</div>}
           <section className="form-section">
             <div className="form-input-usr-img"></div>
             <input

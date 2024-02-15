@@ -8,8 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-
-  const { getLoggedIn } = useContext(AuthContext);
+  const [error, setError] = useState({})
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -23,7 +22,7 @@ const Login = () => {
       navigate("/");
       window.location.reload();
     } catch (error) {
-      console.error(error);
+      setError((prev) => ({ ...prev, errors: error.response.data.Error }))
     }
   };
 
@@ -31,6 +30,7 @@ const Login = () => {
     <div>
       <main className="form-main">
         <form onSubmit={(e) => handleLogin(e)}>
+          {error && <div className="form-error">{error.errors}</div>}
           <section className="form-section">
             <div className="form-input-email-img"></div>
             <input
