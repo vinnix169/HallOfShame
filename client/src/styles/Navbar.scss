@@ -1,0 +1,30 @@
+@use "Default";
+
+#navbar {
+    background-color: Default.$bgc-second;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+}
+
+.navbar-upper-container {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+}
+
+.navbar-lower-container {
+    display: flex;
+}
+
+.nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.nav-link:hover {
+    background-color: aqua;
+}

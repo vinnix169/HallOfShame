@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap');
+
+$bgc-main: #212A3E; 
+$bgc-second: #394867;
+$text-color: #F1F6F9;
+$font-main: "Fredoka";
+$input-border: solid 1px $text-color;
+$input-radius: 10px;
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: $bgc-main ;
+    color: $text-color;
+    font-family: $font-main;
+    font-weight: 300;
+    font-size: large;
+}
+
+//link style
+
+a, Link {
+    text-decoration: none;
+    color: $text-color;   
+}
+
+//input style
+
+input {
+    background-color: $text-color;
+    color: #212A3E;
+    border: $input-border;
+    border-radius: $input-radius;
+    padding: 10px;
+}
+
+input[type="search"] {
+
+    width: 300px;
+}
+
+::-webkit-input-placeholder {
+    font-family: $font-main;
+}
+
+section {
+    background-color: $text-color;
+
+}
+
+select {
+    background-color: $text-color;
+    color: #212A3E;
+    font-family:  $font-main;
+    border-radius: $input-radius;
+    padding: 10px;
+}
+
+//header
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 500;
+}
+
+//list
+
+li {
+    display: inline;
+    list-style: none;
+    text-align: center;
+}

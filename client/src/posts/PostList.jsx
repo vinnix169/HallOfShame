@@ -76,11 +76,11 @@ const PostList = ({ data }) => {
           placeholder="Search..."
           onChange={(e) => setUserSearchInput(e.target.value)}
         />
-        <input className="search-btn" type="button" />
       </div>
       <div className="result-pagination">
         <div className="sort-element">
-          <h2>{userMessage}</h2>
+          <h1>{userMessage}</h1>
+
           <div className="sort-pagination">
             <select
               defaultValue="New"
