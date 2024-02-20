@@ -5,7 +5,7 @@ $bgc-main-hover: #273148;
 $bgc-second: #2a354b;
 $bgc-second-hover: #33405a;
 $bgc-main-alt: #ffa256;
-$bgc-main-hover-alt: #ffc477;
+$bgc-main-alt-hover: #ffc477;
 $text-color: #f1f6f9;
 $font-main: "Fredoka";
 $input-border: solid 1px $text-color;
@@ -29,7 +29,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95vw;
+    width: 90vw;
     padding: 10px;
     margin: auto;
 }
@@ -43,6 +43,9 @@ Link {
 }
 
 //input style
+section {
+    background-color: rgb(0, 0, 0, 0);
+}
 
 input {
     background-color: $text-color;
@@ -50,6 +53,12 @@ input {
     border: $input-border;
     border-radius: $input-radius;
     padding: 10px;
+}
+
+input[type="password"],
+input[type="text"],
+input[type="email"] {
+    width: 100%;
 }
 
 input[type="search"] {
@@ -131,4 +140,10 @@ li {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        width: 80vw;
+    }
 }

@@ -31,7 +31,7 @@ const Login = () => {
       <main className="form-main">
         <form onSubmit={(e) => handleLogin(e)}>
           {error && <div className="form-error">{error.errors}</div>}
-          <section className="form-section">
+          <div className="form-section">
             <div className="form-input-email-img"></div>
             <input
               className="form-input"
@@ -43,8 +43,8 @@ const Login = () => {
                 setUserData((prev) => ({ ...prev, email: e.target.value }))
               }
             />
-          </section>
-          <section className="form-section">
+          </div>
+          <div className="form-section">
             <div className="form-input-psw-img"></div>
             <input
               className="form-input"
@@ -56,7 +56,7 @@ const Login = () => {
                 setUserData((prev) => ({ ...prev, password: e.target.value }))
               }
             />
-          </section>
+          </div>
           <input className="form-input" type="submit" value="Login" />
           <Link to="/register">
             <div className="redirect-login">

@@ -26,3 +26,38 @@
     border-radius: 20px 20px 0 0;
     @extend .img-cover-center;
 }
+
+.feed-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 10px;
+
+    h3,
+    h6 {
+        font-weight: 400;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .feed-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .feed-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .feed-grid {
+        display: flex;
+        flex-direction: column;
+        width: 70vw;
+    }
+    .feed-card {
+        height: 300px;
+    }
+}

@@ -18,7 +18,7 @@
 }
 
 .item {
-    background-color: Default.$bgc-second;
+    background-color: Default.$bgc-main-alt;
     @extend .flex-row-around;
     width: 30px;
     height: 30px;
@@ -29,9 +29,20 @@
 }
 
 .item:hover {
-    background-color: Default.$bgc-second-hover;
+    background-color: Default.$bgc-main-alt-hover;
 }
 
 .disabled-page a {
     color: Default.$disabled;
+}
+
+@media only screen and (max-width: 600px) {
+    .feed-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feed-ordering-holder {
+        text-align: center;
+        margin: 20px 0;
+    }
 }

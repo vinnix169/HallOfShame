@@ -42,7 +42,7 @@
     padding: 10px 0;
 
     &:hover {
-        animation: navbar-hover-in 0.5s;
+        background-color: Default.$bgc-second-hover;
     }
 }
 
@@ -76,4 +76,5 @@
     font-family: "Rubik Doodle Shadow";
     font-size: 40px;
     color: Default.$bgc-main-alt;
+    cursor: default;
 }

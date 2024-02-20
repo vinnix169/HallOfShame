@@ -130,11 +130,11 @@ const PostList = ({ data }) => {
                     backgroundImage: `url("http://localhost:8000/uploads/${element.img}")`,
                   }}
                 ></div>
-                <div className="result-text">
-                  <div className="result-title">{element.title}</div>
-                  <h6>Views: {element.views}</h6>
-                  <div className="result-analitics-container">
-                    <div>Likes: {element.likes}</div>
+                <div className="feed-text">
+                  <h3 className="feed-title">{element.title}</h3>
+                  <div className="feed-analitics">
+                    <h6>Views: {element.views}</h6>
+                    <h6>Likes: {element.likes}</h6>
                   </div>
                 </div>
 

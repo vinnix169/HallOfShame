@@ -52,7 +52,7 @@ const Register = () => {
 
         <form onSubmit={(e) => handleRegister(e)}>
 
-          <section className="form-section-preview-avt">
+          <div className="form-section-preview-avt">
             {userData.avatar && (
               <div
                 className="form-upload-preview-avt"
@@ -62,9 +62,9 @@ const Register = () => {
                 }}
               ></div>
             )}
-          </section>
+          </div>
 
-          <section className="form-section-img">
+          <div className="form-section-img">
             <div>
               <div>Choose your avatar:</div>
             </div>
@@ -83,9 +83,9 @@ const Register = () => {
                 }
               />
             </div>
-          </section>
+          </div>
           {error && <div className="form-error">{error.errors}</div>}
-          <section className="form-section">
+          <div className="form-section">
             <div className="form-input-usr-img"></div>
             <input
               className="form-input"
@@ -97,8 +97,8 @@ const Register = () => {
                 setUserData((prev) => ({ ...prev, username: e.target.value }))
               }
             />
-          </section>
-          <section className="form-section">
+          </div>
+          <div className="form-section">
             <div className="form-input-email-img"></div>
             <input
               className="form-input"
@@ -110,8 +110,8 @@ const Register = () => {
                 setUserData((prev) => ({ ...prev, email: e.target.value }))
               }
             />
-          </section>
-          <section className="form-section">
+          </div>
+          <div className="form-section">
             <div className="form-input-psw-img"></div>
             <input
               className="form-input"
@@ -123,8 +123,8 @@ const Register = () => {
                 setUserData((prev) => ({ ...prev, password: e.target.value }))
               }
             />
-          </section>
-          <section className="form-section">
+          </div>
+          <div className="form-section">
             <div className="form-input-psw-img"></div>
             <input
               className="form-input"
@@ -139,7 +139,7 @@ const Register = () => {
                 }))
               }
             />
-          </section>
+          </div>
           <input className="form-input" type="submit" value="Register" />
         </form>
       </main>
