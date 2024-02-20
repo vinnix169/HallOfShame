@@ -79,18 +79,19 @@ const PostList = ({ data }) => {
       </div>
       <div className="feed-header">
         <h1>{userMessage}</h1>
-
-        <select
-          defaultValue="New"
-          name="sorting"
-          id="sorting"
-          onChange={sortItem}
-        >
-          <option value="New">Recent</option>
-          <option value="Oldest">Oldest</option>
-          <option value="Views">Most Viewed</option>
-          <option value="Likes">Most Liked</option>
-        </select>
+        <div className="feed-ordering-holder">
+          <select
+            defaultValue="New"
+            name="sorting"
+            id="sorting"
+            onChange={sortItem}
+          >
+            <option value="New">Recent</option>
+            <option value="Oldest">Oldest</option>
+            <option value="Views">Most Viewed</option>
+            <option value="Likes">Most Liked</option>
+          </select>
+        </div>
         <ReactPaginate
           id="pagination"
           activeClassName={"item active "}
@@ -110,33 +111,33 @@ const PostList = ({ data }) => {
           forcePage={currentPage}
         />
       </div>
-      <div className="result-grid">
+      <div className="feed-grid">
         {sortedData
           .filter((item) =>
             item.title.toLowerCase().includes(userSearchInput.toLowerCase())
           )
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
-            <div key={index} className="result-grid-element">
+            <div key={index} className="feed-card">
               <Link
                 to={`/post/${element._id}`}
                 onClick={(e) => handleViews(element)}
               >
-                <div className="result-element-container">
-                  <div
-                    className="result-img"
-                    style={{
-                      backgroundImage: `url("http://localhost:8000/uploads/${element.img}")`,
-                    }}
-                  ></div>
-                  <div className="result-text">
-                    <div className="result-title">{element.title}</div>
-                    <h6>Views: {element.views}</h6>
-                    <div className="result-analitics-container">
-                      <div>Likes: {element.likes}</div>
-                    </div>
+
+                <div
+                  className="feed-thumbnail"
+                  style={{
+                    backgroundImage: `url("http://localhost:8000/uploads/${element.img}")`,
+                  }}
+                ></div>
+                <div className="result-text">
+                  <div className="result-title">{element.title}</div>
+                  <h6>Views: {element.views}</h6>
+                  <div className="result-analitics-container">
+                    <div>Likes: {element.likes}</div>
                   </div>
                 </div>
+
               </Link>
             </div>
           ))}

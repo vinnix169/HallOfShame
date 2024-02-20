@@ -1,0 +1,28 @@
+@use "Default";
+
+.feed-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 300px);
+    gap: 20px;
+    box-shadow: 0 0 10px 0px rgb(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.feed-card {
+    background-color: Default.$bgc-main-alt;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.feed-card a {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 70% 30%;
+}
+
+.feed-thumbnail {
+    border-radius: 20px 20px 0 0;
+    @extend .img-cover-center;
+}

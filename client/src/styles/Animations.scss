@@ -1,0 +1,24 @@
+@use "Default";
+
+.def-anim-set {
+}
+
+@keyframes navbar-hover-in {
+    0% {
+    }
+
+    100% {
+        color: Default.$bgc-main-hover-alt;
+        background-color: Default.$bgc-second-hover;
+    }
+}
+
+@keyframes navbar-hover-in {
+    0% {
+    }
+
+    100% {
+        color: Default.$text-color;
+        background-color: Default.$bgc-second;
+    }
+}

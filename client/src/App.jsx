@@ -5,6 +5,7 @@ import axios from "axios";
 import "./styles/Default.scss";
 import "./styles/Navbar.scss";
 import "./styles/Pagination.scss";
+import "./styles/PostList.scss";
 
 axios.defaults.withCredentials = true;
 

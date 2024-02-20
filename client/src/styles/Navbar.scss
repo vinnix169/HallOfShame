@@ -1,11 +1,11 @@
 @use "Default";
+@use "Animations";
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 
 #navbar {
     background-color: Default.$bgc-second;
     display: flex;
     flex-direction: column;
-    width: 100vw;
 }
 
 .navbar-upper-container {
@@ -40,10 +40,10 @@
     width: 100%;
     text-align: center;
     padding: 10px 0;
-}
 
-.nav-link:hover {
-    background-color: Default.$bgc-second-hover;
+    &:hover {
+        animation: navbar-hover-in 0.5s;
+    }
 }
 
 .selected-acc-true {
@@ -75,4 +75,5 @@
 .hos-logo {
     font-family: "Rubik Doodle Shadow";
     font-size: 40px;
+    color: Default.$bgc-main-alt;
 }

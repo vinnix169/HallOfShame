@@ -3,7 +3,9 @@
 $bgc-main: #212a3e;
 $bgc-main-hover: #273148;
 $bgc-second: #2a354b;
-$bgc-second-hover: #2c3850;
+$bgc-second-hover: #33405a;
+$bgc-main-alt: #ffa256;
+$bgc-main-hover-alt: #ffc477;
 $text-color: #f1f6f9;
 $font-main: "Fredoka";
 $input-border: solid 1px $text-color;
@@ -27,8 +29,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    padding: 10px 0;
+    width: 95vw;
+    padding: 10px;
+    margin: auto;
 }
 
 //link style
@@ -51,6 +54,7 @@ input {
 
 input[type="search"] {
     width: 300px;
+    height: 40px;
 }
 
 ::-webkit-input-placeholder {
@@ -67,6 +71,7 @@ select {
     font-family: $font-main;
     border-radius: $input-radius;
     padding: 10px;
+    height: 40px;
 }
 
 //header
@@ -86,4 +91,44 @@ li {
     display: inline;
     list-style: none;
     text-align: center;
+}
+
+//Sample flex
+
+.flex-col-around {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    justify-content: center;
+    width: 100%;
+}
+
+.flex-col-between {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    width: 100%;
+}
+
+.flex-row-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.flex-row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+//image settings
+
+.img-cover-center {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

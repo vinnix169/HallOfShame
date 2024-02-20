@@ -1,17 +1,25 @@
 @use "Default";
 
+.feed-header {
+    @extend .flex-row-between;
+    margin: 20px 0;
+    width: 90vw;
+}
+
+.feed-ordering-holder {
+    width: 50%;
+    text-align: end;
+}
+
 .pagination {
     display: flex;
-    width: 100%;
+    width: fit-content;
     justify-content: center;
 }
 
 .item {
     background-color: Default.$bgc-second;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @extend .flex-row-around;
     width: 30px;
     height: 30px;
     margin: 0 5px;
@@ -27,4 +35,3 @@
 .disabled-page a {
     color: Default.$disabled;
 }
-
