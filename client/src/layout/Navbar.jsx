@@ -42,37 +42,41 @@ const Header = (onSearch) => {
         <div className="navbar-upper-container">
           <div className="hos-logo">Wall of Shame</div>
           <div className="navbar-welcome-space">
-            {loggedIn && <span>Welcome {currentUser.username}!</span>}
+            {loggedIn && <h2>Welcome {currentUser.username}!</h2>}
           </div>
-          <a
-            className="header-account"
-            onClick={selectAccount}
-            style={{
-              backgroundImage: `url("http://localhost:8000/uploads/${
-                loggedIn ? currentUser.avatar : "default-avatar.jpg"
-              }")`,
-            }}
-          ></a>
+          <div className="navbar-account-holder">
+            <a
+              className="nav-account"
+              onClick={selectAccount}
+              style={{
+                backgroundImage: `url("http://localhost:8000/uploads/${loggedIn ? currentUser.avatar : "default-avatar.jpg"
+                  }")`,
+              }}
+            ></a>
+          </div>
           <div className={`selected-acc-${accountSelected}`}>
-            <ul>
-              {!loggedIn && (
-                <>
-                  <Link to={"/login"}>
-                    <li onClick={(e) => setAccountSelected(false)}>Login</li>
-                  </Link>
-
-                  <Link to={"/register"}>
-                    <li onClick={(e) => setAccountSelected(false)}>Register</li>
-                  </Link>
-                </>
-              )}
-
-              {loggedIn && (
-                <Link to={"/"}>
-                  <li onClick={Logout}>Logout</li>
+            {!loggedIn && (
+              <>
+                <Link to={"/login"} onClick={(e) => setAccountSelected(false)}>
+                  Login
                 </Link>
-              )}
-            </ul>
+
+                <Link to={"/register"} onClick={(e) => setAccountSelected(false)}>
+                  Register
+                </Link>
+              </>
+            )}
+
+            {loggedIn && (
+              <>
+                <Link to={"/"} onClick={Logout}>
+                  Logout
+                </Link>
+                <Link to={"/"} onClick={Logout}>
+                  Settings
+                </Link>
+              </>
+            )}
           </div>
         </div>
         <nav className="navbar-lower-container">
@@ -101,7 +105,7 @@ const Header = (onSearch) => {
             </>
           )}
         </nav>
-      </header>
+      </header >
     </>
   );
 };

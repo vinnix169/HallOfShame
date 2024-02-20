@@ -77,42 +77,38 @@ const PostList = ({ data }) => {
           onChange={(e) => setUserSearchInput(e.target.value)}
         />
       </div>
-      <div className="result-pagination">
-        <div className="sort-element">
-          <h1>{userMessage}</h1>
+      <div className="feed-header">
+        <h1>{userMessage}</h1>
 
-          <div className="sort-pagination">
-            <select
-              defaultValue="New"
-              name="sorting"
-              id="sorting"
-              onChange={sortItem}
-            >
-              <option value="New">Recent</option>
-              <option value="Oldest">Oldest</option>
-              <option value="Views">Most Viewed</option>
-              <option value="Likes">Most Liked</option>
-            </select>
-            <ReactPaginate
-              id="pagination"
-              activeClassName={"item active "}
-              breakClassName={"item break-me "}
-              breakLabel={"..."}
-              containerClassName={"pagination"}
-              disabledClassName={"disabled-page"}
-              marginPagesDisplayed={2}
-              nextClassName={"item next "}
-              nextLabel={">"}
-              onPageChange={handlePageClick}
-              pageCount={Math.ceil(data.length / itemsPerPage)}
-              pageClassName={"item pagination-page "}
-              pageRangeDisplayed={2}
-              previousClassName={"item previous"}
-              previousLabel={"<"}
-              forcePage={currentPage}
-            />
-          </div>
-        </div>
+        <select
+          defaultValue="New"
+          name="sorting"
+          id="sorting"
+          onChange={sortItem}
+        >
+          <option value="New">Recent</option>
+          <option value="Oldest">Oldest</option>
+          <option value="Views">Most Viewed</option>
+          <option value="Likes">Most Liked</option>
+        </select>
+        <ReactPaginate
+          id="pagination"
+          activeClassName={"item active "}
+          breakClassName={"item break-me "}
+          breakLabel={"..."}
+          containerClassName={"pagination"}
+          disabledClassName={"disabled-page"}
+          marginPagesDisplayed={2}
+          nextClassName={"item next "}
+          nextLabel={">"}
+          onPageChange={handlePageClick}
+          pageCount={Math.ceil(data.length / itemsPerPage)}
+          pageClassName={"item pagination-page "}
+          pageRangeDisplayed={2}
+          previousClassName={"item previous"}
+          previousLabel={"<"}
+          forcePage={currentPage}
+        />
       </div>
       <div className="result-grid">
         {sortedData

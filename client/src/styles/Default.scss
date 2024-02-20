@@ -1,48 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap");
 
-$bgc-main: #212A3E;
+$bgc-main: #212a3e;
 $bgc-main-hover: #273148;
-$bgc-second: #394867;
-$bgc-second-hover: #405275;
-$text-color: #F1F6F9;
+$bgc-second: #2a354b;
+$bgc-second-hover: #2c3850;
+$text-color: #f1f6f9;
 $font-main: "Fredoka";
 $input-border: solid 1px $text-color;
 $input-radius: 10px;
-
+$disabled: rgb(122, 122, 122);
 
 * {
     margin: 0;
     padding: 0;
 }
 
-
 body {
-    background-color: $bgc-main ;
+    background-color: $bgc-main;
     color: $text-color;
     font-family: $font-main;
     font-weight: 300;
     font-size: large;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 10px 0;
+}
+
 //link style
 
-a, Link {
+a,
+Link {
     text-decoration: none;
-    color: $text-color;   
+    color: $text-color;
 }
 
 //input style
 
 input {
     background-color: $text-color;
-    color: #212A3E;
+    color: #212a3e;
     border: $input-border;
     border-radius: $input-radius;
     padding: 10px;
 }
 
 input[type="search"] {
-
     width: 300px;
 }
 
@@ -52,20 +59,24 @@ input[type="search"] {
 
 section {
     background-color: $text-color;
-
 }
 
 select {
     background-color: $text-color;
-    color: #212A3E;
-    font-family:  $font-main;
+    color: #212a3e;
+    font-family: $font-main;
     border-radius: $input-radius;
     padding: 10px;
 }
 
 //header
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 500;
 }
 

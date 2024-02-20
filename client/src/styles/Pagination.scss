@@ -1,0 +1,30 @@
+@use "Default";
+
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.item {
+    background-color: Default.$bgc-second;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 99px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: Default.$bgc-second-hover;
+}
+
+.disabled-page a {
+    color: Default.$disabled;
+}
+

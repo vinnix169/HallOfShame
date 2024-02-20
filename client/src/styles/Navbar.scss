@@ -1,22 +1,39 @@
 @use "Default";
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 
 #navbar {
     background-color: Default.$bgc-second;
     display: flex;
     flex-direction: column;
     width: 100vw;
-
 }
 
 .navbar-upper-container {
-    display: flex;
-    justify-content: space-around;
-    height: 50px;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    text-align: center;
     align-items: center;
+    padding: 10px 0;
 }
 
 .navbar-lower-container {
     display: flex;
+}
+
+.navbar-account-holder {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.nav-account {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 66px;
+    background-position: center;
+    background-size: cover;
+    margin-right: 10px;
 }
 
 .nav-link {
@@ -27,4 +44,35 @@
 
 .nav-link:hover {
     background-color: Default.$bgc-second-hover;
+}
+
+.selected-acc-true {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 25px;
+    right: 60px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.selected-acc-true > a {
+    width: 150px;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+.selected-acc-true > a:hover {
+    background-color: rgb(26, 26, 26);
+    border-radius: 20px;
+}
+
+.selected-acc-false {
+    display: none;
+}
+
+.hos-logo {
+    font-family: "Rubik Doodle Shadow";
+    font-size: 40px;
 }

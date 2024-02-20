@@ -19,11 +19,7 @@ const Main = () => {
   return (
     <main>
       {!posts && <div className="loading">Loading...</div>}
-      <div className="main-container">
-        <div className="result-container">
-          {posts && <PostList data={posts} />}
-        </div>
-      </div>
+      {posts && <PostList data={posts} />}
     </main>
   );
 };
