@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&display=swap");
 
+body.preload * {
+    animation-duration: 0s !important;
+    -webkit-animation-duration: 0s !important;
+    transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s,
+        padding 0s, margin 0s !important;
+}
+
 $bgc-main: #212a3e;
 $bgc-main-hover: #273148;
 $bgc-second: #2a354b;
