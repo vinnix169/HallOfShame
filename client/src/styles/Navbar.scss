@@ -3,80 +3,159 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 
 #navbar {
-    background-color: Default.$bgc-second;
-    display: flex;
-    flex-direction: column;
+  background-color: Default.$bgc-second;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-upper-container {
-    display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
-    text-align: center;
-    align-items: center;
-    padding: 10px 0;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  text-align: center;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .navbar-lower-container {
-    display: flex;
-    border-bottom: Default.$bgc-main-alt 2px solid;
-    box-shadow: 0 12px 15px 0px rgba(255, 162, 86, 0.068);
+  display: flex;
+  border-bottom: Default.$bgc-main-alt 2px solid;
+  box-shadow: 0 12px 15px 0px rgba(255, 162, 86, 0.068);
 }
 
 .navbar-account-holder {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .nav-account {
-    display: block;
-    width: 50px;
-    height: 50px;
-    border-radius: 66px;
-    background-position: center;
-    background-size: cover;
-    margin-right: 10px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 66px;
+  background-position: center;
+  background-size: cover;
+  margin-right: 10px;
+
+  &:hover {
+    animation: user-hover-in 0.1s ease-in forwards;
+  }
+  &:not(:hover) {
+    animation: user-hover-out 0.2s ease-out;
+  }
 }
 
 .nav-link {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
 
-    &:hover {
-        background-color: Default.$bgc-second-hover;
-    }
+  &:hover {
+    animation: nav-hover-in 0.1s forwards;
+  }
+  &:not(:hover) {
+    animation: nav-hover-out 0.2s;
+  }
 }
 
 .selected-acc-true {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    top: 25px;
-    right: 60px;
-    background-color: black;
-    border-radius: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 25px;
+  right: 60px;
+  background-color: black;
+  border-radius: 20px;
 }
 
 .selected-acc-true > a {
-    width: 150px;
-    text-align: left;
-    padding: 10px 20px;
+  animation: select-hover-in 0.1s ease-out forwards;
+  text-align: left;
+  padding: 10px 20px;
 }
 
 .selected-acc-true > a:hover {
-    background-color: rgb(26, 26, 26);
-    border-radius: 20px;
+  background-color: rgb(26, 26, 26);
+  border-radius: 20px;
 }
 
 .selected-acc-false {
-    display: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 25px;
+  right: 60px;
+  font-size: 0;
+  animation: select-hover-out 0.1s ease-out;
 }
 
 .hos-logo {
-    font-family: "Rubik Doodle Shadow";
-    font-size: 40px;
-    color: Default.$bgc-main-alt;
-    cursor: default;
+  font-family: "Rubik Doodle Shadow";
+  font-size: 40px;
+  color: Default.$bgc-main-alt;
+  cursor: default;
+}
+//--------------------------------------------------------------------------------
+//--------------------------------Animations--------------------------------------
+//--------------------------------------------------------------------------------
+
+@keyframes nav-hover-in {
+  0% {
+  }
+  100% {
+    background-color: Default.$bgc-second-hover;
+  }
+}
+
+@keyframes nav-hover-out {
+  0% {
+    background-color: Default.$bgc-second-hover;
+  }
+  100% {
+    background-color: Default.$bgc-second;
+    box-shadow: 0 0px 0px 0 rgba(255, 162, 86, 0.068);
+  }
+}
+
+@keyframes user-hover-in {
+  0% {
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes user-hover-out {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes select-hover-in {
+  0% {
+    width: 0;
+    height: auto;
+    font-size: 0;
+  }
+  100% {
+    width: 150px;
+    font-size: 15px;
+  }
+}
+
+@keyframes select-hover-out {
+  0% {
+    width: 150px;
+    font-size: 15px;
+  }
+  100% {
+    width: 0px;
+    font-size: 0px;
+    height: 0px;
+  }
 }
