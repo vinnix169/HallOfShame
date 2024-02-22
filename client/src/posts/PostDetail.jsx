@@ -38,44 +38,43 @@ const PostDetail = () => {
 
   }, []);
 
+  /*<div
+                  className="detail-image"
+                  id="#form"
+                  style={{
+                    backgroundImage: `url("http://localhost:8000/uploads/${postData.post.img}")`,
+                  }}
+                ></div>*/
 
   console.log(postData);
   return (
     <>
       {postData.post && (
-        <div id="asd" className="Post-Detail">
-          <main>
-            <div className="detail-image-container">
-              <div
-                className="detail-image"
-                id="#form"
-                style={{
-                  backgroundImage: `url("http://localhost:8000/uploads/${postData.post.img}")`,
-                }}
-              ></div>
+        <main>
+          <div className="detail-image-container">
+            <img src={`http://localhost:8000/uploads/${postData.post.img}`} className="detail-img" alt="" />
+          </div>
+          <div className="detail-text">
+            <h1>{postData.post.title}</h1>
+            <p className="detail-descripton">{postData.post.desc}</p>
+            <div className="detail-ana">
+              <div>Views: {postData.post.views}</div>
+              <div onClick={handleLike}>Likes: {postData.post.likes}</div>
             </div>
-            <div className="detail-text">
-              <div><h1>{postData.post.title}</h1></div>
-              <div className="detail-descripton">{postData.post.desc}</div>
-              <div className="detail-reaction">
-                <div>Views: {postData.post.views}</div>
-                <div onClick={handleLike}>Likes: {postData.post.likes}</div>
-              </div>
-              <div className="detail-creator">
-                <span>Created by:</span>
-                <Link to="/user/:id">
-                  <div
-                    className="detail-creator-avt"
-                    style={{
-                      backgroundImage: `url("http://localhost:8000/uploads/${postData.user.avatar}")`,
-                    }}
-                  ></div>
-                  <span>{postData.user.username}</span>
-                </Link>
-              </div>
+            <span>Created by:</span>
+            <div className="detail-creator">
+              <Link to="/user/:id">
+                <div
+                  className="detail-creator-avt"
+                  style={{
+                    backgroundImage: `url("http://localhost:8000/uploads/${postData.user.avatar}")`,
+                  }}
+                ></div>
+                <span>{postData.user.username}</span>
+              </Link>
             </div>
-          </main >
-        </div >
+          </div>
+        </main >
       )}
     </>
   );

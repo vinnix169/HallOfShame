@@ -45,11 +45,24 @@ const Upload = () => {
     navigate("/uploaded");
   };
 
+  const handleAvatarDelete = () => {
+    setUserData((prev) => ({
+      ...prev,
+      image: "",
+    }))
+  }
+
+  /*<div className="form-upload-preview"
+                style={{
+                  backgroundImage: `url(${memoUrl})`
+                }}>
+              </div>} */
+
   return (
     <>
       <main className="form-main">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <section className="form-section">
+          <div className="form-section">
             <div className="form-input-title-img"></div>
             <input
               className="form-input"
@@ -60,8 +73,8 @@ const Upload = () => {
                 setUserData((prev) => ({ ...prev, title: e.target.value }))
               }
             />
-          </section>
-          <section className="form-section" >
+          </div>
+          <div className="form-section" >
             <div className="form-input-desc-img"></div>
             <textarea
               className="form-input"
@@ -75,31 +88,37 @@ const Upload = () => {
                 }))
               }
             ></textarea>
-          </section>
-          <section className="form-section-img">
+          </div>
+          <div className="form-section-img">
             <div>
-              <div>Choose your image:</div>
+              <div>Choose your avatar:</div>
             </div>
-            <div>
+            <div className="upload-avatar-container">
               <label className="upload-btn" htmlFor="file"></label>
               <input
                 className="upload-btn-hidden"
                 id="file"
                 type="file"
                 accept="image/*"
-                onChange={(e) => setUserData((prev) => ({ ...prev, image: e.target.files[0] }))}
+                onChange={(e) =>
+                  setUserData((prev) => ({
+                    ...prev,
+                    image: e.target.files[0],
+                  }))
+                }
               />
+              <input
+                type="button"
+                value="X"
+                className="delete-avt"
+                onClick={handleAvatarDelete} />
             </div>
-          </section>
-          <section className="form-section-preview">
+          </div>
+          <div className="form-section-preview">
             <div>Preview</div>
             {userData.image &&
-              <div className="form-upload-preview"
-                style={{
-                  backgroundImage: `url(${memoUrl})`
-                }}>
-              </div>}
-          </section>
+              <img src={memoUrl} className="form-upload-preview" alt="" />}
+          </div>
           <input className="form-input" type="submit" value="Submit" />
         </form>
       </main >

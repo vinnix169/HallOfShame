@@ -4,8 +4,8 @@ $bgc-main: #212a3e;
 $bgc-main-hover: #273148;
 $bgc-second: #2a354b;
 $bgc-second-hover: #33405a;
-$bgc-main-alt: #ffa256;
-$bgc-main-alt-hover: #ffc477;
+$bgc-main-alt: rgb(255, 162, 86);
+$bgc-main-alt-hover: rgb(255, 196, 119);
 $text-color: #f1f6f9;
 $font-main: "Fredoka";
 $input-border: solid 1px $text-color;
@@ -47,18 +47,15 @@ section {
     background-color: rgb(0, 0, 0, 0);
 }
 
-input {
+input,
+textarea {
     background-color: $text-color;
     color: #212a3e;
     border: $input-border;
     border-radius: $input-radius;
     padding: 10px;
-}
-
-input[type="password"],
-input[type="text"],
-input[type="email"] {
-    width: 100%;
+    margin: 10px 0;
+    width: calc(100% - 22px);
 }
 
 input[type="search"] {
@@ -139,6 +136,11 @@ li {
 .img-cover-center {
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+}
+.img-contain-center {
+    background-position: center;
+    background-size: contain;
     background-repeat: no-repeat;
 }
 

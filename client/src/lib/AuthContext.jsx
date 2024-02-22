@@ -12,13 +12,14 @@ function AuthContextProvider(props) {
       .catch((err) => console.log(err));
 
     setLoggedIn(loggedInRes.data);
+
+
   }
 
   useEffect(() => {
     getLoggedIn();
   }, []);
 
-  console.log(props);
 
   return (
     <AuthContext.Provider value={{ loggedIn, getLoggedIn }}>

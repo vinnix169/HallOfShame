@@ -12,7 +12,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     if (!userData.avatar) {
-      setUserData((prev) => ({ ...prev, avatar: "" }));
+      setUserData((prev) => ({ ...prev, avatar: "../img/user.png" }));
     }
     try {
       const formData = new FormData();
@@ -28,7 +28,7 @@ const Register = () => {
       getLoggedIn();
 
       navigate("/");
-
+      window.location.reload()
       if (loggedIn) {
         window.location.reload();
       }
@@ -37,6 +37,16 @@ const Register = () => {
       setError((prev) => ({ ...prev, errors: error.response.data.Error }))
     }
   };
+
+  const handleAvatarDelete = () => {
+    setUserData((prev) => ({
+      ...prev,
+      avatar: "",
+    }))
+
+    const input = document.querySelector("upload-btn-hidden")
+
+  }
 
   const memoURL = useMemo(() => {
     if (userData.avatar) {
@@ -52,8 +62,8 @@ const Register = () => {
 
         <form onSubmit={(e) => handleRegister(e)}>
 
-          <div className="form-section-preview-avt">
-            {userData.avatar && (
+          <div className="form-preview-avt">
+            {userData.avatar &&
               <div
                 className="form-upload-preview-avt"
                 style={{
@@ -61,14 +71,22 @@ const Register = () => {
                     })`,
                 }}
               ></div>
-            )}
+            }
+            {!userData.avatar &&
+              < div
+                className="form-upload-preview-avt"
+                style={{
+                  backgroundImage: `url("http://localhost:8000/uploads/user.png")`,
+                }}
+              ></div>
+            }
           </div>
 
           <div className="form-section-img">
             <div>
               <div>Choose your avatar:</div>
             </div>
-            <div>
+            <div className="upload-avatar-container">
               <label className="upload-btn" htmlFor="file"></label>
               <input
                 className="upload-btn-hidden"
@@ -82,6 +100,11 @@ const Register = () => {
                   }))
                 }
               />
+              <input
+                type="button"
+                value="X"
+                className="delete-avt"
+                onClick={handleAvatarDelete} />
             </div>
           </div>
           {error && <div className="form-error">{error.errors}</div>}
@@ -143,7 +166,7 @@ const Register = () => {
           <input className="form-input" type="submit" value="Register" />
         </form>
       </main>
-    </main>
+    </main >
   );
 };
 

@@ -6,12 +6,13 @@
     width: 90vw;
 }
 
-.feed-ordering-holder {
-    width: 50%;
-    text-align: end;
+.feed-header-group {
+    display: flex;
+    align-items: center;
 }
 
 .pagination {
+    margin-left: 10px;
     display: flex;
     width: fit-content;
     justify-content: center;

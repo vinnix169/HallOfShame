@@ -18,6 +18,8 @@
 
 .navbar-lower-container {
     display: flex;
+    border-bottom: Default.$bgc-main-alt 2px solid;
+    box-shadow: 0 12px 15px 0px rgba(255, 162, 86, 0.068);
 }
 
 .navbar-account-holder {

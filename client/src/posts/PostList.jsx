@@ -77,9 +77,10 @@ const PostList = ({ data }) => {
           onChange={(e) => setUserSearchInput(e.target.value)}
         />
       </div>
+
       <div className="feed-header">
         <h1>{userMessage}</h1>
-        <div className="feed-ordering-holder">
+        <div className="feed-header-group">
           <select
             defaultValue="New"
             name="sorting"
@@ -91,25 +92,25 @@ const PostList = ({ data }) => {
             <option value="Views">Most Viewed</option>
             <option value="Likes">Most Liked</option>
           </select>
+          <ReactPaginate
+            id="pagination"
+            activeClassName={"item active "}
+            breakClassName={"item break-me "}
+            breakLabel={"..."}
+            containerClassName={"pagination"}
+            disabledClassName={"disabled-page"}
+            marginPagesDisplayed={2}
+            nextClassName={"item next "}
+            nextLabel={">"}
+            onPageChange={handlePageClick}
+            pageCount={Math.ceil(data.length / itemsPerPage)}
+            pageClassName={"item pagination-page "}
+            pageRangeDisplayed={2}
+            previousClassName={"item previous"}
+            previousLabel={"<"}
+            forcePage={currentPage}
+          />
         </div>
-        <ReactPaginate
-          id="pagination"
-          activeClassName={"item active "}
-          breakClassName={"item break-me "}
-          breakLabel={"..."}
-          containerClassName={"pagination"}
-          disabledClassName={"disabled-page"}
-          marginPagesDisplayed={2}
-          nextClassName={"item next "}
-          nextLabel={">"}
-          onPageChange={handlePageClick}
-          pageCount={Math.ceil(data.length / itemsPerPage)}
-          pageClassName={"item pagination-page "}
-          pageRangeDisplayed={2}
-          previousClassName={"item previous"}
-          previousLabel={"<"}
-          forcePage={currentPage}
-        />
       </div>
       <div className="feed-grid">
         {sortedData
