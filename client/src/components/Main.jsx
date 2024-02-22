@@ -8,24 +8,25 @@ import Login from "../auth/Login";
 
 const Main = () => {
   const [posts, setPosts] = useState(null);
-  const { loggedIn } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { loggedIn, getLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   async function getCustomers() {
-    if (!loggedIn) {
-      return navigate("/login")
+    await getLoggedIn();
+    try {
+      const postsRes = await axios.get("http://localhost:8000/post/");
+      setPosts(postsRes.data);
+    } catch (err) {
+      console.warn("You need to be logged in, to proceed: " + err);
+      return navigate("/login");
     }
 
-    const postsRes = await axios.get("http://localhost:8000/post/");
-    setPosts(postsRes.data);
-
+    navigate("/");
   }
-
 
   useEffect(() => {
     getCustomers();
-
-  }, [loggedIn]);
+  }, []);
 
   return (
     <main>

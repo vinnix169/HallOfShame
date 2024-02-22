@@ -8,7 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState({})
+  const [error, setError] = useState({});
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,7 +22,7 @@ const Login = () => {
       navigate("/");
       window.location.reload();
     } catch (error) {
-      setError((prev) => ({ ...prev, errors: error.response.data.Error }))
+      setError((prev) => ({ ...prev, errors: error.response.data.Error }));
     }
   };
 
