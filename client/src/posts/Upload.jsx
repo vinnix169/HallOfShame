@@ -26,7 +26,7 @@ const Upload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
+    console.log(userData.image)
     const formData = new FormData();
     formData.append("title", userData.title);
     formData.append("desc", userData.description);
@@ -117,7 +117,7 @@ const Upload = () => {
           <div className="form-section-preview">
             <div>Preview</div>
             {userData.image &&
-              <img src={memoUrl} className="form-upload-preview" alt="" />}
+              <img src={memoUrl} width="400px" className="form-upload-preview" alt="" />}
           </div>
           <input className="form-input" type="submit" value="Submit" />
         </form>

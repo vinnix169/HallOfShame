@@ -3,7 +3,9 @@ const Post = require("../models/postModel");
 const auth = require("../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
-
+const fs = require("fs");
+const sharp = require("sharp");
+const path = require("path");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -25,6 +27,32 @@ router.post("/", auth, upload.single("img"), async (req, res) => {
         const { title, description, likes, views, date, desc } = req.body;
         const user = jwt.decode(req.cookies.token).user;
 
+        const originalImgBuffer = req.file.buffer;
+        const originalImgName = req.file.originalname;
+
+        const thumbnailFileName = `${
+            path.parse(originalImgName).name
+        }-thumbnail.jpg`;
+        const thumbnailImagePath = path.join(
+            __dirname,
+            "uploads/thumbnail",
+            thumbnailFileName
+        );
+
+        console.log("Original Image:", req.file);
+
+        // Resize and save thumbnail asynchronously
+        await sharp(originalImgBuffer)
+            .resize({ width: 300, height: 300 })
+            .toBuffer()
+            .then(async (thumbnailBuffer) => {
+                await writeFileAsync(thumbnailImagePath, thumbnailBuffer);
+            })
+            .catch((err) => {
+                console.error(err);
+                return res.status(500).send("Error creating thumbnail");
+            });
+
         const newPost = new Post({
             title,
             img: req.file.filename,
@@ -41,12 +69,11 @@ router.post("/", auth, upload.single("img"), async (req, res) => {
         res.status(200).send({ message: "Post created" });
     } catch (err) {
         res.status(500).send({
-            Error: "An internal server error has occured...",
+            Error: "An internal server error has occurred...",
         });
         console.error(err);
     }
 });
-
 //Get All Posts
 
 router.get("/", auth, async (req, res) => {
