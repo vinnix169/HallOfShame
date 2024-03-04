@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Upload = () => {
   const [userData, setUserData] = useState({
     title: "",
@@ -12,36 +11,58 @@ const Upload = () => {
     date: Date.now(),
     image: "",
     creator: "",
+    tags: [],
   });
+
+  const handleKeyDown = (e) => {
+    if (e.key === " ") {
+      const newTag = e.target.value.trim();
+      if (newTag) {
+        setUserData((prev) => ({ ...prev, tags: [...userData.tags, newTag] }));
+      }
+
+      e.target.value = "";
+    }
+  };
+
+  const handleTagDelete = (item) => {
+    console.log(item);
+    setUserData((prev) => ({
+      ...prev,
+      tags: prev.tags.filter((tag) => tag !== item),
+    }));
+  };
 
   const memoUrl = useMemo(() => {
     if (userData.image) {
-      return URL.createObjectURL(userData.image)
+      return URL.createObjectURL(userData.image);
     }
-  }, [userData.image])
-
+  }, [userData.image]);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(userData.image)
-    const formData = new FormData();
-    formData.append("title", userData.title);
-    formData.append("desc", userData.description);
-    formData.append("likes", userData.likes);
-    formData.append("views", userData.views);
-    formData.append("date", userData.date);
-    formData.append("img", userData.image, userData.image.name);
-    console.log(formData.get("image"));
-    try {
-      const result = await axios.post("http://localhost:8000/post/", formData)
-      console.log(result)
-    } catch (error) {
-      console.error(error)
+    if (userData) {
+      const formData = new FormData();
+      formData.append("title", userData.title);
+      formData.append("desc", userData.description);
+      formData.append("likes", userData.likes);
+      formData.append("views", userData.views);
+      formData.append("date", userData.date);
+      formData.append("img", userData.image, userData.image.name);
+      formData.append("tags", userData.tags);
+      console.log(formData.get("img"));
+      try {
+        const result = await axios.post(
+          "http://localhost:8000/post/",
+          formData
+        );
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
     }
-
     navigate("/uploaded");
   };
 
@@ -49,14 +70,16 @@ const Upload = () => {
     setUserData((prev) => ({
       ...prev,
       image: "",
-    }))
-  }
+    }));
+  };
 
   /*<div className="form-upload-preview"
                 style={{
                   backgroundImage: `url(${memoUrl})`
                 }}>
               </div>} */
+
+  console.log(userData);
 
   return (
     <>
@@ -74,7 +97,7 @@ const Upload = () => {
               }
             />
           </div>
-          <div className="form-section" >
+          <div className="form-section">
             <div className="form-input-desc-img"></div>
             <textarea
               className="form-input"
@@ -111,17 +134,43 @@ const Upload = () => {
                 type="button"
                 value="X"
                 className="delete-avt"
-                onClick={handleAvatarDelete} />
+                onClick={handleAvatarDelete}
+              />
+            </div>
+          </div>
+          <div className="form-section">
+            <input
+              type="text"
+              placeholder="Add tags (optional)"
+              onKeyDown={(e) => handleKeyDown(e)}
+            />
+            <p>Tags:</p>
+            <div className="tags-field">
+              {userData.tags.map((i, index) => (
+                <div
+                  className="upload-tag"
+                  key={index}
+                  onClick={(e) => handleTagDelete(i)}
+                >
+                  {i}
+                </div>
+              ))}
             </div>
           </div>
           <div className="form-section-preview">
             <div>Preview</div>
-            {userData.image &&
-              <img src={memoUrl} width="400px" className="form-upload-preview" alt="" />}
+            {userData.image && (
+              <img
+                src={memoUrl}
+                width="400px"
+                className="form-upload-preview"
+                alt=""
+              />
+            )}
           </div>
           <input className="form-input" type="submit" value="Submit" />
         </form>
-      </main >
+      </main>
     </>
   );
 };

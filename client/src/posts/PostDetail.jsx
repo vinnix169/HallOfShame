@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import UseScroll from "../lib/UseScroll";
 
-
 const PostDetail = () => {
   const { id } = useParams();
   const [postData, setPostData] = useState([]);
@@ -19,23 +18,23 @@ const PostDetail = () => {
     }
     window.scrollTo({
       top: 80,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   const handleLike = async () => {
     try {
-      const result = await axios.put("http://localhost:8000/post/like", { id: postData.post._id })
-      console.log(result)
+      const result = await axios.put("http://localhost:8000/post/like", {
+        id: postData.post._id,
+      });
+      console.log(result);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-
-  }
+  };
 
   useEffect(() => {
     getPostData();
-
   }, []);
 
   /*<div
@@ -52,7 +51,11 @@ const PostDetail = () => {
       {postData.post && (
         <main>
           <div className="detail-image-container">
-            <img src={`http://localhost:8000/uploads/${postData.post.img}`} className="detail-img" alt="" />
+            <img
+              src={`http://localhost:8000/uploads/${postData.post.img}`}
+              className="detail-img"
+              alt=""
+            />
           </div>
           <div className="detail-text">
             <h1>{postData.post.title}</h1>
@@ -73,8 +76,15 @@ const PostDetail = () => {
                 <span>{postData.user.username}</span>
               </Link>
             </div>
+            <div className="tags-field">
+              {postData.post.tags.map((i, index) => (
+                <div className="tags" key={index}>
+                  {i}
+                </div>
+              ))}
+            </div>
           </div>
-        </main >
+        </main>
       )}
     </>
   );

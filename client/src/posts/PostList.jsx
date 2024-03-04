@@ -65,6 +65,7 @@ const PostList = ({ data }) => {
 
   useEffect(() => {
     setSortedData((prev) => [...data]);
+
     sortItem();
   }, []);
 
@@ -124,11 +125,10 @@ const PostList = ({ data }) => {
                 to={`/post/${element._id}`}
                 onClick={(e) => handleViews(element)}
               >
-
                 <div
                   className="feed-thumbnail"
                   style={{
-                    backgroundImage: `url("http://localhost:8000/uploads/${element.img}")`,
+                    backgroundImage: `url("http://localhost:8000/uploads/thumbnail/thumbnail-${element.img}")`,
                   }}
                 ></div>
                 <div className="feed-text">
@@ -138,7 +138,6 @@ const PostList = ({ data }) => {
                     <h6>Likes: {element.likes}</h6>
                   </div>
                 </div>
-
               </Link>
             </div>
           ))}

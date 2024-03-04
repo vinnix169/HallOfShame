@@ -64,12 +64,14 @@
 @media only screen and (max-width: 1200px) {
   .feed-grid {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 300px);
   }
 }
 
 @media only screen and (max-width: 850px) {
   .feed-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 300px);
   }
 }
 
