@@ -7,12 +7,13 @@ body.preload * {
         padding 0s, margin 0s !important;
 }
 
-$bgc-main: #212a3e;
-$bgc-main-hover: #273148;
-$bgc-second: #2a354b;
-$bgc-second-hover: #33405a;
-$bgc-main-alt: rgb(255, 162, 86);
-$bgc-main-alt-hover: rgb(255, 196, 119);
+$navy-1: #212a3e; //main
+$navy-2: #273148; //main-hover
+$navy-3: #2a354b; //second
+$navy-4: #33405a; //second-hover
+$navy-5: #3a4966; //second-hover
+$orange-1: rgb(255, 162, 86); //main-alt
+$orange-2: rgb(255, 196, 119); //main-alt-hover
 $text-color: #f1f6f9;
 $font-main: "Fredoka";
 $input-border: solid 1px $text-color;
@@ -25,7 +26,7 @@ $disabled: rgb(122, 122, 122);
 }
 
 body {
-    background-color: $bgc-main;
+    background-color: $navy-1;
     color: $text-color;
     font-family: $font-main;
     font-weight: 300;
@@ -37,7 +38,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 90vw;
-    padding: 10px;
+    padding: 20px;
     margin: auto;
 }
 

@@ -42,13 +42,9 @@ router.post("/", auth, upload.single("img"), async (req, res) => {
         const { title, description, likes, views, date, desc, tags } = req.body;
 
         const parsedTags = JSON.parse(tags);
-
         const user = jwt.decode(req.cookies.token).user;
-
         const originalImgBuffer = await sharp(req.file.path).toBuffer();
-
-        const originalImgName = req.file.originalname; // No need for path here
-
+        const originalImgName = req.file.originalname;
         const thumbnailFileName = `thumbnail-${imgId}${originalImgName}`;
         const thumbnailImagePath = path.join(thumbnailDir, thumbnailFileName);
 
@@ -109,30 +105,26 @@ router.get("/", auth, async (req, res) => {
 
 router.get("/tags", auth, async (req, res) => {
     try {
+        // Gyűjtsd össze az összes képet és tag-et az adatbázisból
         const posts = await Post.find();
 
-        let tags = [];
-        posts.forEach((i) => {
-            if (i.tags) {
-                tags.push(i.tags);
+        const uniqueTagsMap = new Map();
+
+        posts.forEach((post) => {
+            // Ha vannak elemek
+            if (post.tags && post.img) {
+                post.tags.forEach((tag) => {
+                    if (!uniqueTagsMap.has(tag)) {
+                        uniqueTagsMap.set(tag, [post.img]);
+                    } else {
+                        uniqueTagsMap.get(tag).push(post.img);
+                    }
+                });
             }
         });
 
-        const uniqueTagsSet = new Set();
-
-        // Minden adatelemen végigmegyünk
-        tags.forEach((tag) => {
-            // Minden egyes taget hozzáadjuk a Set-hez
-            tag.forEach((t) => {
-                // Tagek hozzáadása a Set-hez (szükség esetén azonosítóként átalakítva)
-                uniqueTagsSet.add(t.toString());
-            });
-        });
-
-        // A Set átalakítása tömbbé
-        const uniqueTagsArray = Array.from(uniqueTagsSet);
-
-        res.json(uniqueTagsArray);
+        // Az egyedi tageket tartalmazó Map objektum visszaadása a kliensnek
+        res.json(Object.fromEntries(uniqueTagsMap));
     } catch (err) {
         console.error(err);
         res.status(500).send();

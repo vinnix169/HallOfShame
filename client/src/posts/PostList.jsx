@@ -144,8 +144,9 @@ const PostList = ({ data }) => {
                 </div>
               </Link>
             </div>
+
           ))}
-      </div>
+      </div >
       <div className="result-pagination">
         <ReactPaginate
           id="pagination"

@@ -78,9 +78,9 @@ const PostDetail = () => {
             </div>
             <div className="tags-field">
               {postData.post.tags.map((i, index) => (
-                <div className="tags" key={index}>
+                <Link to="/categories" className="tags" onClick={(e) => { document.documentElement.scrollTop = 0; }} key={index}>
                   {i}
-                </div>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,7 +1,7 @@
 @use "Default";
 
 form {
-    background-color: Default.$bgc-second;
+    background-color: Default.$navy-3;
     padding: 20px;
     width: 400px;
     border-radius: 20px;
@@ -19,7 +19,7 @@ form {
     width: 150px;
     height: 150px;
     border-radius: 99px;
-    border: 2px Default.$bgc-main-alt solid;
+    border: 2px Default.$orange-1 solid;
     @extend .img-cover-center;
 }
 
@@ -53,9 +53,9 @@ form {
     margin: 10px 2px;
     border-radius: 20px;
     padding: 0 5px;
-    background-color: Default.$bgc-main-alt;
+    background-color: Default.$orange-1;
     &:hover {
-        background-color: Default.$bgc-main-alt-hover;
+        background-color: Default.$orange-2;
     }
 }
 

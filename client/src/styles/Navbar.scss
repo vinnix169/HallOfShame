@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
 
 #navbar {
-    background-color: Default.$bgc-second;
+    background-color: Default.$navy-2;
     display: flex;
     flex-direction: column;
 }
@@ -18,7 +18,7 @@
 
 .navbar-lower-container {
     display: flex;
-    border-bottom: Default.$bgc-main-alt 2px solid;
+    border-bottom: Default.$orange-1 2px solid;
     box-shadow: 0 12px 15px 0px rgba(255, 162, 86, 0.068);
 }
 
@@ -96,7 +96,7 @@
 .hos-logo {
     font-family: "Rubik Doodle Shadow";
     font-size: 40px;
-    color: Default.$bgc-main-alt;
+    color: Default.$orange-1;
     cursor: default;
 }
 //--------------------------------------------------------------------------------
@@ -107,16 +107,16 @@
     0% {
     }
     100% {
-        background-color: Default.$bgc-second-hover;
+        background-color: Default.$navy-4;
     }
 }
 
 @keyframes nav-hover-out {
     0% {
-        background-color: Default.$bgc-second-hover;
+        background-color: Default.$navy-4;
     }
     100% {
-        background-color: Default.$bgc-second;
+        background-color: Default.$navy-3;
         box-shadow: 0 0px 0px 0 rgba(255, 162, 86, 0.068);
     }
 }

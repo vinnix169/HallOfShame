@@ -1,56 +1,56 @@
 @use "Default";
 
 .feed-header {
-  @extend .flex-row-between;
-  margin: 20px 0;
-  width: 90vw;
+    @extend .flex-row-between;
+    margin: 20px 0;
+    width: 90vw;
 }
 
 .feed-header-group {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .pagination {
-  margin-left: 10px;
-  display: flex;
-  width: fit-content;
-  justify-content: center;
+    margin-left: 10px;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
 }
 
 .item {
-  background-color: Default.$bgc-main-alt;
-  @extend .flex-row-around;
-  margin: 0 5px;
-  border-radius: 99px;
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  width: 30px;
-  height: 30px;
-
-  a {
-    margin-top: 10px;
+    background-color: Default.$orange-1;
+    @extend .flex-row-around;
+    margin: 0 5px;
+    border-radius: 99px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
     width: 30px;
     height: 30px;
-  }
+
+    a {
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+    }
 }
 
 .item:hover {
-  background-color: Default.$bgc-main-alt-hover;
+    background-color: Default.$orange-2;
 }
 
 .disabled-page a {
-  color: Default.$disabled;
+    color: Default.$disabled;
 }
 
 @media only screen and (max-width: 600px) {
-  .feed-header {
-    flex-direction: column;
-    align-items: center;
-  }
-  .feed-ordering-holder {
-    text-align: center;
-    margin: 20px 0;
-  }
+    .feed-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feed-ordering-holder {
+        text-align: center;
+        margin: 20px 0;
+    }
 }

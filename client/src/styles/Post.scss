@@ -1,13 +1,14 @@
 @use "Default";
 .detail-img {
     width: 100%;
-    height: 800px;
+    max-height: 800px;
+    border-radius: 20px;
 }
 
 .detail-text {
-    background-color: Default.$bgc-second;
+    background-color: Default.$navy-2;
     @extend .flex-col-around;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 20px;
     width: 50vw;
     border-radius: 20px;
@@ -29,12 +30,12 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
-    background-color: Default.$bgc-main-alt;
+    background-color: Default.$orange-1;
     width: fit-content;
     padding: 10px;
     border-radius: 15px;
     &:hover {
-        background-color: Default.$bgc-main-alt-hover;
+        background-color: Default.$orange-2;
     }
 }
 .detail-creator-avt {
@@ -43,6 +44,27 @@
     border-radius: 99px;
     margin-right: 10px;
     @extend .img-cover-center;
+}
+
+.tags-field {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.tags {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: Default.$navy-4;
+    cursor: pointer;
+
+    &::before {
+        content: "#";
+    }
+
+    &:hover {
+        background-color: Default.$navy-5;
+    }
 }
 
 @media only screen and (max-width: 700px) {

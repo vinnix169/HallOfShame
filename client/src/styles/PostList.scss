@@ -29,7 +29,7 @@
 }
 
 .feed-card {
-    background-color: Default.$bgc-main-alt;
+    background-color: Default.$orange-1;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 0 2px 10px 1px rgb(0, 0, 0, 0.3);
 
@@ -51,11 +51,11 @@
 }
 
 .feed-card:hover {
-    animation: card-hover-in 0.3s ease-out forwards;
+    animation: card-hover-in 0.1s ease-out forwards;
 }
 .feed-card:not(:hover) {
     &:not(:hover) {
-        animation: card-hover-out 0.3s ease-out forwards;
+        animation: card-hover-out 0.1s ease-out forwards;
     }
 }
 
@@ -127,14 +127,14 @@
     0% {
     }
     100% {
-        background-color: Default.$bgc-main-alt-hover;
+        background-color: Default.$orange-2;
         transform: scale(1.02);
     }
 }
 
 @keyframes card-hover-out {
     0% {
-        background-color: Default.$bgc-main-alt-hover;
+        background-color: Default.$orange-2;
         transform: scale(1.01);
     }
     100% {
