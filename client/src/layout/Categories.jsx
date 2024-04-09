@@ -1,39 +1,29 @@
 
 
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Categories = () => {
 
-  const [choose, useChoose] = useState("");
+  const [data, setData] = useState([]);
 
-  const handleChoose = () => { };
+  useEffect(() => {
+    axios.get("http://localhost:8000/post/tags").then((res) => setData(res.data))
+  }, [])
 
   return (
     <main>
       <h1 className="cat-title">All Categories</h1>
-      {!choose && (
-        <div className="category-container">
-          <div>
-            <h4>Kevin</h4>
+
+      <div className="category-container feed-grid">
+        {data && data.map((i, index) => (
+          <div key={index} className="feed-card">
+            {i}
           </div>
-          <div>
-            <h4>Kristóf</h4>
-          </div>
-          <div>
-            <h4>Bálint</h4>
-          </div>
-          <div>
-            <h4>Erik</h4>
-          </div>
-          <div>
-            <h4>Előd</h4>
-          </div>
-          <div>
-            <h4>Psenák</h4>
-          </div>
-        </div>
-      )}
-      {choose && <div></div>}
+        ))}
+      </div>
+
+
     </main>
   );
 };

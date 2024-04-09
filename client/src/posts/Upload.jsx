@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Upload = () => {
@@ -15,7 +15,7 @@ const Upload = () => {
   });
 
   const handleKeyDown = (e) => {
-    if (e.key === " ") {
+    if (e.key === " " || e.key === 'Enter') {
       const newTag = e.target.value.trim();
       if (newTag) {
         setUserData((prev) => ({ ...prev, tags: [...userData.tags, newTag] }));
@@ -51,8 +51,7 @@ const Upload = () => {
       formData.append("views", userData.views);
       formData.append("date", userData.date);
       formData.append("img", userData.image, userData.image.name);
-      formData.append("tags", userData.tags);
-      console.log(formData.get("img"));
+      formData.append("tags", JSON.stringify(userData.tags));
       try {
         const result = await axios.post(
           "http://localhost:8000/post/",
@@ -88,6 +87,7 @@ const Upload = () => {
           <div className="form-section">
             <div className="form-input-title-img"></div>
             <input
+
               className="form-input"
               required
               type="text"
@@ -119,6 +119,7 @@ const Upload = () => {
             <div className="upload-avatar-container">
               <label className="upload-btn" htmlFor="file"></label>
               <input
+                required
                 className="upload-btn-hidden"
                 id="file"
                 type="file"

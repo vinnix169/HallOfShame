@@ -114,23 +114,27 @@ const PostList = ({ data }) => {
         </div>
       </div>
       <div className="feed-grid">
+
         {sortedData
           .filter((item) =>
             item.title.toLowerCase().includes(userSearchInput.toLowerCase())
           )
           .slice(indexOfFirstItem, indexOfLastItem)
           .map((element, index) => (
+
             <div key={index} className="feed-card">
               <Link
                 to={`/post/${element._id}`}
                 onClick={(e) => handleViews(element)}
               >
-                <div
-                  className="feed-thumbnail"
-                  style={{
-                    backgroundImage: `url("http://localhost:8000/uploads/thumbnail/thumbnail-${element.img}")`,
-                  }}
-                ></div>
+                <div className="feed-thumbnail-holder">
+                  <div
+                    className="feed-thumbnail"
+                    style={{
+                      backgroundImage: `url("http://localhost:8000/uploads/thumbnail/thumbnail-${element.img}")`,
+                    }}
+                  ></div>
+                </div>
                 <div className="feed-text">
                   <h3 className="feed-title">{element.title}</h3>
                   <div className="feed-analitics">
