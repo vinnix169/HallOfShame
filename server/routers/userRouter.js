@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const randomString = require("../lib/randomStringGen");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
+const auth = require("../middleware/auth");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -78,6 +79,7 @@ router.post("/register", upload.single("avatar"), async (req, res) => {
             userTag,
             password: passwordHash,
             avatar: req.file.filename,
+            about: "",
         });
 
         await newUser.save();
@@ -197,4 +199,25 @@ router.post("/creatorName", async (req, res) => {
         res.send(username);
     } catch (err) {}
 });
+
+router.get("/:id", auth, async (req, res) => {
+    try {
+        console.log(req.params.id);
+        const user = await User.findById(req.params.id);
+
+        const userDTO = {
+            id: user.id,
+            userTag: user.userTag,
+            username: user.username,
+            avatar: user.avatar,
+            about: user.about,
+        };
+
+        res.status(200).send(userDTO);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 module.exports = router;

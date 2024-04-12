@@ -1,0 +1,64 @@
+@use "Default";
+
+.user-header {
+    width: 100%;
+    min-height: 400px;
+    background-color: Default.$navy-3;
+    padding: 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-avatar-holder {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar {
+    min-width: 250px;
+    min-height: 250px;
+    border-radius: 125px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.user-desc-holder {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+
+.about-me-section {
+    display: flex;
+    padding: 20px;
+    margin-top: 10px;
+    min-height: 200px;
+    max-width: 100%;
+    background-color: Default.$navy-2;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .user-header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-desc-holder {
+        justify-content: center;
+        width: 100%;
+        font-size: 0.8rem;
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+    }
+}

@@ -33,9 +33,12 @@ const Header = (onSearch) => {
     window.location.reload();
   };
 
+
   useEffect(() => {
     getUser();
   }, []);
+
+
   return (
     <>
       <header id="navbar">
@@ -72,7 +75,7 @@ const Header = (onSearch) => {
                 <Link to={"/"} onClick={Logout}>
                   Logout
                 </Link>
-                <Link to={"/"} onClick={Logout}>
+                <Link to={"/user/" + currentUser._id} onClick={(e) => setAccountSelected(false)}>
                   Settings
                 </Link>
               </>

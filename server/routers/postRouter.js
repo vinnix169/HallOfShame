@@ -131,6 +131,18 @@ router.get("/tags", auth, async (req, res) => {
     }
 });
 
+router.get("/tags/:tagName", async (req, res) => {
+    try {
+        const tag = req.params.tagName;
+        const data = await Post.find({ tags: tag });
+
+        res.send(data);
+    } catch (error) {
+        res.status(400).send("Error");
+        console.error(error);
+    }
+});
+
 //Get A Post By Id
 
 router.get("/:id", auth, async (req, res) => {
@@ -141,7 +153,11 @@ router.get("/:id", auth, async (req, res) => {
         const result = {
             data: {
                 post,
-                user,
+                user: {
+                    avatar: user.avatar,
+                    username: user.username,
+                    id: user._id,
+                },
             },
         };
 
