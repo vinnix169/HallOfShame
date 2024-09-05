@@ -3,7 +3,9 @@ import UseScroll from "../../lib/UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
-import TagMenu from "./TagMenu";
+//import TagMenu from "./TagMenu";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+
 
 const PostList = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -66,9 +68,6 @@ const PostList = ({ data }) => {
     });
   };
 
-  const handleTagMenu = () => {
-    setShowTagMenu((prev) => !prev)
-  }
 
   useEffect(() => {
     if (typeof data === "object") {
@@ -82,11 +81,7 @@ const PostList = ({ data }) => {
 
   return (
     <>
-      <div>
-        {!showTagMenu && <div onClick={(e) => { handleTagMenu() }} className="tag-hamburger"></div>}
-        {showTagMenu && <div onClick={(e) => { handleTagMenu() }} className="tag-hamburger-active"></div>}
-        <TagMenu isActive={showTagMenu} />
-      </div>
+
       <div className="search-element">
         <input
           type="search"
@@ -117,13 +112,13 @@ const PostList = ({ data }) => {
             disabledClassName={"disabled-page"}
             marginPagesDisplayed={2}
             nextClassName={"item next "}
-            nextLabel={">"}
+            nextLabel={<FaArrowAltCircleRight />}
             onPageChange={handlePageClick}
             pageCount={Math.ceil(data.length / itemsPerPage)}
             pageClassName={"item pagination-page "}
             pageRangeDisplayed={2}
             previousClassName={"item previous"}
-            previousLabel={"<"}
+            previousLabel={<FaArrowAltCircleLeft />}
             forcePage={currentPage}
           />
         </div>
@@ -172,13 +167,13 @@ const PostList = ({ data }) => {
           disabledClassName={"disabled-page"}
           marginPagesDisplayed={2}
           nextClassName={"item next "}
-          nextLabel={">"}
+          nextLabel={<FaArrowAltCircleRight />}
           onPageChange={handlePageClick}
           pageCount={Math.ceil(data.length / itemsPerPage)}
           pageClassName={"item pagination-page "}
           pageRangeDisplayed={2}
           previousClassName={"item previous"}
-          previousLabel={"<"}
+          previousLabel={<FaArrowAltCircleLeft />}
           forcePage={currentPage}
         />
       </div>

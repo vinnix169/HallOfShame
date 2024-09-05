@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../../styles/TagMenu.scss"
 
-
+/*NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 const TagMenu = ({ isActive }) => {
 
@@ -27,16 +27,21 @@ const TagMenu = ({ isActive }) => {
     return (
         <div className="tag-menu">
             {isActive &&
-                <div>
-                    <div className="tag-menu-body">
-                        <h1>Tags</h1>
-                        <ul className="tag-list-holder">
-                            {tag.map((i, index) => (
-                                <li className="tag-list-item">#{i.tag}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>}
+
+                <div className="tag-menu-body">
+                    <h1>Tags</h1>
+                    <ul className="tag-list-holder">
+                        {tag.map((i, index) => (
+                            <li className="tag-list-item">#{i.tag}</li>
+                        ))}
+                    </ul>
+                </div>
+            }
+            {
+                !isActive && <div></div>
+
+
+            }
         </div>);
 }
 

@@ -19,29 +19,45 @@
 }
 
 .item {
-    background-color: Default.$orange-1;
     @extend .flex-row-around;
     margin: 0 5px;
     border-radius: 99px;
     text-align: center;
     cursor: pointer;
     display: flex;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 
     a {
-        margin-top: 10px;
-        width: 30px;
-        height: 30px;
+        color: Default.$orange-1;
+        width: 25px;
+        height: 25px;
     }
 }
 
-.item:hover {
-    background-color: Default.$orange-2;
+.next,
+.previous {
+    font-size: larger;
+}
+
+.item:hover,
+.item a:hover {
+    color: Default.$orange-2;
+}
+
+.pagination-page {
+    &.active {
+        background-color: rgb(255, 255, 255, 0.1);
+    }
 }
 
 .disabled-page a {
     color: Default.$disabled;
+
+    &:hover {
+        color: Default.$disabled;
+        cursor: not-allowed;
+    }
 }
 
 @media only screen and (max-width: 600px) {

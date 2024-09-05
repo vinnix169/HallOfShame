@@ -1,3 +1,29 @@
+# Welcome to my First Ever Website!
+
+This page provides an image gallery which I made for friends to collect funny images. You can securely register an account with password hashing and using jwt token.
+The site has a small image optimalization feature, which means all uploaded photos have a smaller scale thumbnail variation to easily display multiple images.
+I used create-react-app here but I use Vite in later projects.
+
+# Front-end libraries
+
+-   axios
+-   gsap
+-   react (18.2.0)
+-   react-router-dom
+-   react-paginate (since I didn't know what querying was at the time)
+-   SASS / SCSS
+
+# Back-end libraries
+
+-   mongoose
+-   bcrypt
+-   cors
+-   dotenv
+-   express
+-   jsonwebtoken
+-   multer
+-   sharp
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +94,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Start the back-end
+
+Since I don't host the web server, you're going to need to set up your MongoDB account. You can write your connection string in the .env file and your JWT secret.

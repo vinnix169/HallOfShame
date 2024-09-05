@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 
 const Upload = () => {
   const [userData, setUserData] = useState({
@@ -103,12 +105,12 @@ const Upload = () => {
                   }))
                 }
               />
-              <input
+              <button
                 type="button"
-                value="X"
                 className="delete-avt"
                 onClick={handleAvatarDelete}
-              />
+
+              ><FaRegTrashAlt /></button>
             </div>
           </div>
           <div className="form-section">

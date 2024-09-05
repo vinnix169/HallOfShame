@@ -3,6 +3,7 @@ import UseScroll from "../../lib/UseScroll";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 const CategoryList = () => {
   const [data, setData] = useState([]);
@@ -51,7 +52,7 @@ const CategoryList = () => {
       </div>
 
       <div className="feed-header">
-        <h1>{userMessage}</h1>
+        <h1>All Categories:</h1>
         <div className="feed-header-group">
           <ReactPaginate
             id="pagination"
@@ -62,13 +63,13 @@ const CategoryList = () => {
             disabledClassName={"disabled-page"}
             marginPagesDisplayed={2}
             nextClassName={"item next "}
-            nextLabel={">"}
+            nextLabel={<FaArrowAltCircleRight />}
             onPageChange={handlePageClick}
             pageCount={Math.ceil(data.length / itemsPerPage)}
             pageClassName={"item pagination-page "}
             pageRangeDisplayed={2}
             previousClassName={"item previous"}
-            previousLabel={"<"}
+            previousLabel={<FaArrowAltCircleLeft />}
             forcePage={currentPage}
           />
         </div>
